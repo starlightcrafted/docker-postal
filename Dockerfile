@@ -17,5 +17,11 @@ RUN git clone https://github.com/atech/postal /opt/postal/app \
 ## Install gems required by postal
 RUN /opt/postal/app/bin/postal bundle /opt/postal/app/vendor/bundle
 
+## Stick in startup script
+ADD scripts/start.sh /start.sh
+
 ## Clean up apt
 RUN rm -rf /var/lib/apt/lists/*
+
+## Entrypoint
+ENTRYPOINT ["/start.sh"]
