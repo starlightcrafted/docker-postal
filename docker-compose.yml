@@ -1,0 +1,6 @@
+version: "3"
+services:
+  postal:
+    build: .
+    image: postal
+    container_name: postal
