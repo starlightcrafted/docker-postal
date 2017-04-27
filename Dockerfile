@@ -21,8 +21,5 @@ RUN /opt/postal/bin/postal bundle /opt/postal/vendor/bundle
 ## Stick in startup script
 ADD scripts/start.sh /start.sh
 
-## Create docker folder for status keeping
-RUN mkdir /opt/postal/docker
-
 ## Startup
 CMD ["/start.sh"]

@@ -4,6 +4,8 @@ services:
     build: .
     image: postal
     container_name: postal
+    volumes:
+      - ./data/postal/docker:/opt/postal/docker
     links:
       - mysql
       - rabbitmq

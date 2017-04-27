@@ -8,7 +8,7 @@ fi
 ## Set Hostname
 sed -i "s/postal\.example\.com/$POSTAL_HOSTNAME/" /opt/postal/config/postal.yml
 
-## Use augeas to set the MySQL/RabbitMQ setup
+## Set MySQL/RabbitMQ usernames/passwords
 ### MySQL Main DB
 sed -i -e '/main_db:/!b' -e ':a' -e "s/host.*/host: mysql/;t trail" -e 'n;ba' -e ':trail' -e 'n;btrail' /opt/postal/config/postal.yml
 sed -i -e'/main_db:/!b' -e ':a' -e "s/username.*/username: root/;t trail" -e 'n;ba' -e ':trail' -e 'n;btrail' /opt/postal/config/postal.yml
@@ -27,6 +27,8 @@ sed -i -e '/rabbitmq:/!b' -e ':a' -e "s/vhost.*/vhost: \/$RABBITMQ_DEFAULT_VHOST
 ### Initialize DB
 if [[ ! -f /opt/postal/docker/postal_initialized ]]; then
 	/opt/postal/bin/postal initialize && touch /opt/postal/docker/postal_initialized
+else
+	/opt/postal/bin/postal upgrade
 fi
 
 ## Clean Up
