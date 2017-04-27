@@ -6,6 +6,10 @@ cp -R /opt/postal/config-original/* /opt/postal/config
 ## Generate keys
 /opt/postal/bin/postal initialize-config
 
+if [[ $(cat /opt/postal/config/postal.yml| grep -i web_server |wc -l) == 0 ]]; then
+	cat /docker/webserver_bind.yml >> /opt/postal/config/postal.yml
+fi
+
 ## Set Hostname
 sed -i "s/postal\.example\.com/$POSTAL_HOSTNAME/" /opt/postal/config/postal.yml
 
