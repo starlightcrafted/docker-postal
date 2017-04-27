@@ -25,12 +25,13 @@ sed -i -e '/rabbitmq:/!b' -e ':a' -e "s/username.*/username: $RABBITMQ_DEFAULT_U
 sed -i -e '/rabbitmq:/!b' -e ':a' -e "s/password.*/password: $RABBITMQ_DEFAULT_PASS/;t trail" -e 'n;ba' -e ':trail' -e 'n;btrail' /opt/postal/config/postal.yml
 sed -i -e '/rabbitmq:/!b' -e ':a' -e "s/vhost.*/vhost: \/$RABBITMQ_DEFAULT_VHOST/;t trail" -e 'n;ba' -e ':trail' -e 'n;btrail' /opt/postal/config/postal.yml
 
-### Initialize DB
-if [[ ! -f /opt/postal/docker/postal_initialized ]]; then
-	/opt/postal/bin/postal initialize && touch /opt/postal/docker/postal_initialized
-else
-	/opt/postal/bin/postal upgrade
-fi
+## Initialize DB
+echo "== Waiting for MySQL to start up =="
+while ! mysqladmin ping -h mysql --silent; do
+    sleep 1
+done
+/opt/postal/bin/postal upgrade
+
 
 ## Run
 /opt/postal/bin/postal run

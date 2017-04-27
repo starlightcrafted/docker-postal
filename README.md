@@ -6,5 +6,7 @@ Change configuration in docker-compose.yml to update passwords for MySQL/RabbitM
 ```
 docker-compose up -d
 ```
+### Configuration
+Configuration is located at data/postal/config after the first start.
 
 Still WIP

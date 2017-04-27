@@ -5,8 +5,7 @@ services:
     image: postal
     container_name: postal
     volumes:
-      - ./data/postal/config:/opt/postal/config
-      - ./data/postal/docker:/opt/postal/docker
+      - ./data/postal:/opt/postal/config
     environment:
       - POSTAL_HOSTNAME=idontknow.nowhere.com
       - MYSQL_ROOT_PASSWORD=changeme
