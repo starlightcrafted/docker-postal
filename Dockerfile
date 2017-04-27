@@ -9,17 +9,20 @@ RUN apt-get -y update \
 RUN gem install bundler && gem install procodile
 
 ## Create user for postal
-RUN useradd -r -m -d /opt/postal -s /bin/bash postal
+RUN useradd -r -d /opt/postal -s /bin/bash postal
 
 ## Clone postal
-RUN git clone https://github.com/atech/postal /opt/postal/app \
+RUN git clone https://github.com/atech/postal /opt/postal \
 && chown -R postal:postal /opt/postal/
 
 ## Install gems required by postal
-RUN /opt/postal/app/bin/postal bundle /opt/postal/app/vendor/bundle
+RUN /opt/postal/bin/postal bundle /opt/postal/vendor/bundle
 
 ## Stick in startup script
 ADD scripts/start.sh /start.sh
+
+## Create docker folder for status keeping
+RUN mkdir /opt/postal/docker
 
 ## Startup
 CMD ["/start.sh"]

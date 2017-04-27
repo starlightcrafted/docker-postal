@@ -4,8 +4,16 @@ services:
     build: .
     image: postal
     container_name: postal
+    links:
+      - mysql
+      - rabbitmq
     environment:
       - POSTAL_HOSTNAME=idontknow.nowhere.com
+      - MYSQL_ROOT_PASSWORD=changeme
+      - MYSQL_DATABASE=postal
+      - RABBITMQ_DEFAULT_USER=postal
+      - RABBITMQ_DEFAULT_PASS=changeme
+      - RABBITMQ_DEFAULT_VHOST=postal
   mysql:
     image: mariadb:10
     container_name: postal_mysql
@@ -18,4 +26,4 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=postal
       - RABBITMQ_DEFAULT_PASS=changeme
-      - RABBITMQ_DEFAULT_VHOST=postal
+      - RABBITMQ_DEFAULT_VHOST=/postal
