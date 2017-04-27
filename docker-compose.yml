@@ -7,9 +7,6 @@ services:
     volumes:
       - ./data/postal/config:/opt/postal/config
       - ./data/postal/docker:/opt/postal/docker
-    links:
-      - mysql
-      - rabbitmq
     environment:
       - POSTAL_HOSTNAME=idontknow.nowhere.com
       - MYSQL_ROOT_PASSWORD=changeme
