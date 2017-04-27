@@ -21,5 +21,8 @@ RUN /opt/postal/bin/postal bundle /opt/postal/vendor/bundle
 ## Stick in startup script
 ADD scripts/start.sh /start.sh
 
+## Expose
+EXPOSE 5000
+
 ## Startup
 CMD ["/start.sh"]

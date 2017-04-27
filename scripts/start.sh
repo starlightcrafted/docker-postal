@@ -31,7 +31,5 @@ else
 	/opt/postal/bin/postal upgrade
 fi
 
-## Clean Up
-rm -r /opt/postal/tmp/pids
 ## Run
 /opt/postal/bin/postal run
