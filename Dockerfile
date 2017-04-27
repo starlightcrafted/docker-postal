@@ -1,8 +1,9 @@
 FROM ruby:2.4
 
-## Install augeas
+## Install nodejss
 RUN apt-get -y update \
-&& apt-get -y install augeas-lenses augeas-tools nodejs
+&& apt-get -y install nodejs \
+&& rm -rf /var/lib/apt/lists/*
 
 ## Install required gems
 RUN gem install bundler && gem install procodile
@@ -20,8 +21,5 @@ RUN /opt/postal/app/bin/postal bundle /opt/postal/app/vendor/bundle
 ## Stick in startup script
 ADD scripts/start.sh /start.sh
 
-## Clean up apt
-RUN rm -rf /var/lib/apt/lists/*
-
-## Entrypoint
-ENTRYPOINT ["/start.sh"]
+## Startup
+CMD ["/start.sh"]
