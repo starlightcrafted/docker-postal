@@ -18,6 +18,9 @@ RUN git clone https://github.com/atech/postal /opt/postal \
 ## Install gems required by postal
 RUN /opt/postal/bin/postal bundle /opt/postal/vendor/bundle
 
+## Move config folder
+RUN mv /opt/postal/config /opt/postal/config-original
+
 ## Stick in startup script
 ADD scripts/start.sh /start.sh
 

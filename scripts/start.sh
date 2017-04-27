@@ -1,9 +1,10 @@
 #!/bin/bash
 
-## Generate keys if they do not exist
-if [[ ! -f /opt/postal/config/signing.key ]]; then
-	/opt/postal/bin/postal initialize-config
-fi
+## Refresh config
+cp -R /opt/postal/config-original/* /opt/postal/config
+
+## Generate keys
+/opt/postal/bin/postal initialize-config
 
 ## Set Hostname
 sed -i "s/postal\.example\.com/$POSTAL_HOSTNAME/" /opt/postal/config/postal.yml
