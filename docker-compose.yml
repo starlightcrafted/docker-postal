@@ -5,6 +5,7 @@ services:
     image: postal
     container_name: postal
     volumes:
+      - ./data/postal/config:/opt/postal/config
       - ./data/postal/docker:/opt/postal/docker
     links:
       - mysql
@@ -19,6 +20,8 @@ services:
   mysql:
     image: mariadb:10
     container_name: postal_mysql
+    volumes:
+      - ./data/mysql:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=changeme
       - MYSQL_DATABASE=postal
