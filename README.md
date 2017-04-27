@@ -4,6 +4,7 @@
 Change configuration in docker-compose.yml to update passwords for MySQL/RabbitMQ.
 Both passwords in the `postal` service, `mysql` service and `rabbitmq` service have to be changed.
 
+Then, start postal by running
 ```
 docker-compose up -d
 ```
