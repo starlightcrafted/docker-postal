@@ -6,6 +6,7 @@ services:
     container_name: postal
     ports:
       - 80:5000
+      - 25:2525
     volumes:
       - ./data/postal:/opt/postal/config
       - ./data/docker:/docker
