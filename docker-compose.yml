@@ -11,7 +11,6 @@ services:
       - ./data/postal:/opt/postal/config
       - ./data/docker:/docker
     environment:
-      - POSTAL_HOSTNAME=idontknow.nowhere.com
       - MYSQL_ROOT_PASSWORD=changeme
       - MYSQL_DATABASE=postal
       - RABBITMQ_DEFAULT_USER=postal

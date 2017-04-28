@@ -10,9 +10,6 @@ if [[ $(cat /opt/postal/config/postal.yml| grep -i web_server |wc -l) == 0 ]]; t
 	cat /docker/webserver_bind.yml >> /opt/postal/config/postal.yml
 fi
 
-## Set Hostname
-sed -i "s/postal\.example\.com/$POSTAL_HOSTNAME/" /opt/postal/config/postal.yml
-
 ## Set MySQL/RabbitMQ usernames/passwords
 ### MySQL Main DB
 sed -i -e '/main_db:/!b' -e ':a' -e "s/host.*/host: mysql/;t trail" -e 'n;ba' -e ':trail' -e 'n;btrail' /opt/postal/config/postal.yml
