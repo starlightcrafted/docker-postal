@@ -12,7 +12,8 @@ services:
       - "mysql"
       - "rabbitmq"
     volumes:
-      - ./data/postal:/opt/postal/config
+      - ./data/postal/assets:/opt/postal/public/assets
+      - ./data/postal/config:/opt/postal/config
       - ./data/docker:/docker
     environment:
       - MYSQL_ROOT_PASSWORD=changeme

@@ -32,5 +32,11 @@ sed -i -e '/rabbitmq:/!b' -e ':a' -e "s/vhost.*/vhost: \/$RABBITMQ_DEFAULT_VHOST
 ## Clean Up
 rm -rf /opt/postal/tmp/pids/*
 
+## Wait for MySQL to start up
+echo "== Waiting for MySQL to start up =="
+while ! mysqladmin ping -h mysql --silent; do
+    sleep 0.5
+done
+
 ## Start Postal
 /opt/postal/bin/postal "$@"

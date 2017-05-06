@@ -1,8 +1,8 @@
 FROM ruby:2.4
 
-## Install nodejs
+## Install nodejs and mysql-client
 RUN apt-get -y update \
-&& apt-get -y install nodejs \
+&& apt-get -y install nodejs mysql-client\
 && rm -rf /var/lib/apt/lists/*
 
 ## Install required gems
