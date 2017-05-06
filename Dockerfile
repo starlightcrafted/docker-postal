@@ -1,8 +1,8 @@
 FROM ruby:2.4
 
-## Install nodejss
+## Install nodejs
 RUN apt-get -y update \
-&& apt-get -y install nodejs mysql-client\
+&& apt-get -y install nodejs \
 && rm -rf /var/lib/apt/lists/*
 
 ## Install required gems
@@ -21,11 +21,11 @@ RUN /opt/postal/bin/postal bundle /opt/postal/vendor/bundle
 ## Move config folder
 RUN mv /opt/postal/config /opt/postal/config-original
 
-## Stick in startup script
-ADD scripts/start.sh /start.sh
+## Stick in required files
+ADD wrapper.sh /wrapper.sh
 
 ## Expose
 EXPOSE 5000
 
 ## Startup
-CMD ["/start.sh"]
+ENTRYPOINT ["/bin/bash", "-c", "/wrapper.sh ${*}", "--"]

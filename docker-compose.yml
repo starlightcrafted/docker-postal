@@ -4,9 +4,13 @@ services:
     build: .
     image: postal
     container_name: postal
+    command: run
     ports:
-      - 80:5000
-      - 25:2525
+      - 127.0.0.1:80:5000
+      - 127.0.0.1:25:2525
+    depends_on:
+      - "mysql"
+      - "rabbitmq"
     volumes:
       - ./data/postal:/opt/postal/config
       - ./data/docker:/docker
