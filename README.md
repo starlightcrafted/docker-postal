@@ -4,7 +4,7 @@
 
 | tag           | Status                                                                                                                                           |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| latest        | ![Daily Build](https://api.travis-ci.org/ALinuxNinja/docker-postal.svg?branch=latest)                                                            |
+| latest        | [![Daily Build](https://api.travis-ci.org/ALinuxNinja/docker-postal.svg?branch=latest)](https://hub.docker.com/r/alinuxninja/postal/)            |
 
 ### Instructions
 Change configuration in docker-compose.yml to update passwords for MySQL/RabbitMQ.
