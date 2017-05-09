@@ -1,6 +1,6 @@
 ## Docker container for [atech/postal](https://github.com/atech/postal)
 
-### Docker Hub Build Status
+### Docker Hub Daily Builds Status
 
 | tag           | Status                                                                                                                                           |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
