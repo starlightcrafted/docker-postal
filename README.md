@@ -1,8 +1,10 @@
 ## Docker container for [atech/postal](https://github.com/atech/postal)
 
 ### Docker Hub Build Status
-| ----- | -------------------------------------------------------------------------------------- |
-| Daily |  ![Daily Build](https://api.travis-ci.org/ALinuxNinja/docker-postal.svg?branch=latest) |
+
+| tag           | Status                                                                                                                                           |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| latest        | ![Daily Build](https://api.travis-ci.org/ALinuxNinja/docker-postal.svg?branch=latest)                                                            |
 
 ### Instructions
 Change configuration in docker-compose.yml to update passwords for MySQL/RabbitMQ.
