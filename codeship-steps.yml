@@ -3,4 +3,5 @@
   image_name: alinuxninja/postal
   registry: https://index.docker.io/v1/
   encrypted_dockercfg_path: dockercfg.encrypted
-  tag: latest
+  tag: master
+  image_tag: latest
