@@ -32,6 +32,5 @@ docker-compose run postal initialize
 ### Migrations
 See https://github.com/atech/postal/wiki/Upgrading.
 
-Be sure to do some port mappings to allow your SMTP server and HTTP(s) server to be accessed. I suggest simply port mapping the SMTP server and using [jwilder/nginx-proxy](https://github.com/jwilder/nginx-proxy) to proxy the HTTP server.
-
-Still WIP
+### Ports
+Port mappings may change (as they have in the past). If SMTP/HTTP(s) is not working, verify that the mapped ports are correct.
