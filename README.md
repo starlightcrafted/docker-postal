@@ -2,9 +2,9 @@
 
 ### Docker Hub Daily Builds Status
 
-| tag           | Status                                                                                                                                | Travis-CI Build                                              |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| latest        | [![Daily Build](https://api.travis-ci.org/ALinuxNinja/docker-postal.svg?branch=latest)](https://hub.docker.com/r/alinuxninja/postal/) | [\[Build\]](https://travis-ci.org/ALinuxNinja/docker-postal) |
+| tag           | Status                                                                                                                                   | Docker Hub                                                    |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| latest        | [![Daily Build](https://api.travis-ci.org/ALinuxNinja/docker-postal.svg?branch=latest)](https://travis-ci.org/ALinuxNinja/docker-postal) | [\[DockerHub\]](https://hub.docker.com/r/alinuxninja/postal/) |
 
 Side Note: Sometimes, ruby fails to fetch and the build looks like it's failed. Also, each branch corresponds to the docker tag, so the "master" branch always shows that it has failed.
 
