@@ -4,13 +4,13 @@
   registry: https://index.docker.io/v1/
   encrypted_dockercfg_path: dockercfg.encrypted
   steps:
-    - docker tag alinuxninja/postal alinuxninja/postal:latest
-    - docker push alinuxninja/postal
+  - command: docker tag alinuxninja/postal alinuxninja/postal:latest
+  - command: docker push alinuxninja/postal
 - service: app
   type: serial
   image_name: alinuxninja/postal
   registry: https://index.docker.io/v1/
   encrypted_dockercfg_path: dockercfg.encrypted
   steps:
-    - docker tag alinuxninja/postal alinuxninja/postal:$(git rev-parse --short $(git ls-remote https://github.com/atech/postal.git refs/heads/master | awk '{print $1}'))
-    - docker push alinuxninja/postal
+  - command: docker tag alinuxninja/postal alinuxninja/postal:$(git rev-parse --short $(git ls-remote https://github.com/atech/postal.git refs/heads/master | awk '{print $1}'))
+  - command: docker push alinuxninja/postal
