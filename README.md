@@ -1,6 +1,7 @@
 ## Docker container for [atech/postal](https://github.com/atech/postal)
 
-### Docker Hub Daily Builds Status
+### Docker Hub Daily Builds
+Builds are done every 6 hours by [Codeship](http://codeship.com/)
 
 | tag           | Status                                                                                                                                   | Docker Hub                                                    |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
