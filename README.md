@@ -5,7 +5,7 @@ Builds are done every 6 hours by [Codeship](http://codeship.com/)
 
 | tag           | Status                                                                                                                                   | Docker Hub                                                    |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| latest        | ![Daily Build](https://app.codeship.com/projects/aef32ad0-1807-0135-b213-7e299b644564/status?branch=master)                              | [\[alinuxninja/postal\]](https://hub.docker.com/r/alinuxninja/postal/) |
+| latest        | ![Daily Build](https://app.codeship.com/projects/aef32ad0-1807-0135-b213-7e299b644564/status?branch=master)                              | [\[alinuxninja/postal:latest\]](https://hub.docker.com/r/alinuxninja/postal/) |
 
 ### Instructions
 Change configuration in docker-compose.yml to update passwords for MySQL/RabbitMQ.
