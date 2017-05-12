@@ -7,6 +7,8 @@ Builds are done every 6 hours by [Codeship](http://codeship.com/)
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | latest        | ![Daily Build](https://app.codeship.com/projects/aef32ad0-1807-0135-b213-7e299b644564/status?branch=master)                              | [alinuxninja/postal:latest](https://hub.docker.com/r/alinuxninja/postal/) |
 
+By default, docker-compose.yml uses Docker Hub for the image and does not do building, though it can be set to build from the included Dockerfile if needed.
+
 ### Instructions
 Change configuration in docker-compose.yml to update passwords for MySQL/RabbitMQ.
 Both passwords in the `postal` service, `mysql` service and `rabbitmq` service have to be changed.
