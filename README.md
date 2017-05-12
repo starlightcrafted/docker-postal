@@ -4,7 +4,7 @@
 
 | tag           | Status                                                                                                                                   | Docker Hub                                                    |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| latest        | ![Daily Build](https://app.codeship.com/projects/aef32ad0-1807-0135-b213-7e299b644564/status?branch=latest)                              | [\[DockerHub\]](https://hub.docker.com/r/alinuxninja/postal/) |
+| latest        | ![Daily Build](https://app.codeship.com/projects/aef32ad0-1807-0135-b213-7e299b644564/status?branch=master)                              | [\[DockerHub\]](https://hub.docker.com/r/alinuxninja/postal/) |
 
 Side Note: Sometimes, ruby fails to fetch and the build looks like it's failed. Also, each branch corresponds to the docker tag, so the "master" branch always shows that it has failed.
 
