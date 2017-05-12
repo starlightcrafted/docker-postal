@@ -1,5 +1,5 @@
 - service: app
-  type: push
+  type: serial
   image_name: alinuxninja/postal
   registry: https://index.docker.io/v1/
   encrypted_dockercfg_path: dockercfg.encrypted
@@ -7,7 +7,7 @@
     - docker tag alinuxninja/postal alinuxninja/postal:latest
     - docker push alinuxninja/postal
 - service: app
-  type: push
+  type: serial
   image_name: alinuxninja/postal
   registry: https://index.docker.io/v1/
   encrypted_dockercfg_path: dockercfg.encrypted
