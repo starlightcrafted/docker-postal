@@ -35,3 +35,6 @@ See https://github.com/atech/postal/wiki/Upgrading.
 
 ### Ports
 Port mappings may change (as they have in the past). If SMTP/HTTP(s) is not working, verify that the mapped ports are correct.
+
+### Anti-Spam / Antivirus
+The initial design for the container was to be simple, minimal, and customizable, so Spamassassin and ClamAV are not included by default. Feel free to fork and add to the Dockerfile (though you must set docker-compose.yml to build from Dockerfile and not pull an image), or add them by linking additional containers
