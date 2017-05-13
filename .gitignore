@@ -1,3 +1,6 @@
 data/*
+!data/.gitkeep
+!data/postal/.gitkeep
 codeship.aes
 daily.sh
+

@@ -13,7 +13,6 @@ services:
     volumes:
       - ./data/postal/assets:/opt/postal/public/assets
       - ./data/postal/config:/opt/postal/config
-      - ./data/docker:/docker
     environment:
       - MYSQL_ROOT_PASSWORD=changeme
       - MYSQL_DATABASE=postal
