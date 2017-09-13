@@ -1,13 +1,6 @@
-## Docker container for [atech/postal](https://github.com/atech/postal)
+[![Build Status](https://semaphoreci.com/api/v1/alinuxninja/docker-postal/branches/master/badge.svg)](https://semaphoreci.com/alinuxninja/docker-postal) [![](https://images.microbadger.com/badges/image/alinuxninja/postal.svg)](https://microbadger.com/images/alinuxninja/postal) [![](https://images.microbadger.com/badges/version/alinuxninja/postal.svg)](https://microbadger.com/images/alinuxninja/postal) [![](https://images.microbadger.com/badges/version/alinuxninja/postal.svg)](https://hub.docker.com/r/alinuxninja/postal/)
 
-### Docker Hub Daily Builds
-Builds are done every 6 hours by [Codeship](http://codeship.com/)
-
-| tag           | Status                                                                                                                                   | Docker Hub                                                    |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| latest        | ![Daily Build](https://app.codeship.com/projects/aef32ad0-1807-0135-b213-7e299b644564/status?branch=master)                              | [alinuxninja/postal:latest](https://hub.docker.com/r/alinuxninja/postal/) |
-
-By default, docker-compose.yml uses Docker Hub for the image and does not do building, though it can be set to build from the included Dockerfile if needed.
+By default, docker-compose.yml uses Docker Hub for the image and does not do building, though it can be set to build from the included Dockerfile if needed. Images are built each hour by [Semaphore](https://semaphoreci.com/)
 
 ### Instructions
 Change configuration in docker-compose.yml to update passwords for MySQL/RabbitMQ. Note that both passwords in the `postal` service, `mysql` service and `rabbitmq` service have to be changed.
