@@ -5,12 +5,12 @@ services:
     container_name: postal
     command: run
     ports:
-      - 127.0.0.1:80:5000
       - 127.0.0.1:25:25
     depends_on:
       - "mysql"
       - "rabbitmq"
     volumes:
+      - static_assets:/opt/postal/public
       - ./data/postal/assets:/opt/postal/public/assets
       - ./data/postal/config:/opt/postal/config
     environment:
@@ -34,3 +34,19 @@ services:
       - RABBITMQ_DEFAULT_USER=postal
       - RABBITMQ_DEFAULT_PASS=changeme
       - RABBITMQ_DEFAULT_VHOST=/postal
+  nginx:
+    image: nginx
+    restart: always
+    ports:
+      - 127.0.0.1:80:80
+    links:
+      - postal
+    depends_on:
+      - postal
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - static_assets:/opt/postal/public:ro
+      - ./data/postal/assets:/opt/postal/public/assets:ro
+volumes:
+  static_assets:
+
