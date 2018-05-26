@@ -1,0 +1,22 @@
+version: 2
+jobs:
+ build:
+   machine: true
+   steps:
+     - checkout
+     - run: docker build -t postal:latest .
+workflows:
+  version: 2
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 * * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - build
+  commit:
+    jobs:
+      - build

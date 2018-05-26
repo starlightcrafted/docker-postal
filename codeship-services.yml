@@ -1,4 +1,0 @@
-app:
-  build:
-    image: alinuxninja/postal
-    dockerfile: Dockerfile
