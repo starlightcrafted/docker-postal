@@ -10,6 +10,8 @@ RUN apt-get -y update \
 	&& useradd -r -d /opt/postal -s /bin/bash postal \
 	&& chown -R postal:postal /opt/postal/ \
 	&& /opt/postal/bin/postal bundle /opt/postal/vendor/bundle \
+	&& apt-get -y purge python-dev git-core \
+	&& apt-get -y autoremove \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ## Adjust permissions
