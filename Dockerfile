@@ -9,7 +9,8 @@ RUN apt-get -y update \
 	&& gem install procodile \
 	&& useradd -r -d /opt/postal -s /bin/bash postal \
 	&& chown -R postal:postal /opt/postal/ \
-	&& /opt/postal/bin/postal bundle /opt/postal/vendor/bundle
+	&& /opt/postal/bin/postal bundle /opt/postal/vendor/bundle \
+	&& apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ## Adjust permissions
 RUN setcap 'cap_net_bind_service=+ep' /usr/local/bin/ruby
