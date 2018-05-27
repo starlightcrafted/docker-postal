@@ -1,7 +1,7 @@
 FROM ruby:2.4
 
 RUN apt-get -y update \
-	&& apt-get -y install nodejs mysql-client git-core python-minimal python-pip python-dev libcap2-bin \
+	&& apt-get -y install --no-install-recommends nodejs mysql-client git-core python-minimal python-pip python-dev libcap2-bin \
 	&& pip install j2cli \
         && git clone https://github.com/atech/postal.git /opt/postal \
 	&& rm -rf /var/lib/apt/lists/* \
