@@ -5,8 +5,8 @@ jobs:
     steps:
       - checkout
       - run: 
-        name: Build Postal Docker Container
-        command: docker build -t postal:latest .
+          name: Build Postal Docker Container
+          command: docker build -t postal:latest .
       #- run:
       #  name: Skip this job for Pull Requests
       #  command: '[[ -v CIRCLE_PR_NUMBER ]] && circleci step halt || true'
