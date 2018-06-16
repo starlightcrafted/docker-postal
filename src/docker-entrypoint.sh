@@ -10,6 +10,7 @@ if [ ! -f /opt/postal/config/postal.yml ] || [[ $(cat /opt/postal/config/postal.
 	## Generate config and keys
 	/opt/postal/bin/postal initialize-config
 fi
+cat /opt/postal/config/postal.yml
 
 ## Clean Up
 rm -rf /opt/postal/tmp/pids/*

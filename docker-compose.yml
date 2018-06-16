@@ -1,7 +1,8 @@
 version: "3"
 services:
   postal:
-    image: catdeployed/postal:dev
+    build: .
+    #image: catdeployed/postal:dev
     container_name: postal
     command: run
     ports:
@@ -12,7 +13,7 @@ services:
     volumes:
       - static_assets:/opt/postal/public
       - ./data/postal/assets:/opt/postal/public/assets
-      - ./data/postal/config:/opt/postal/config
+      - ./src/templates/:/templates
     environment:
       - MYSQL_ROOT_PASSWORD=changeme
       - MYSQL_DATABASE=postal
