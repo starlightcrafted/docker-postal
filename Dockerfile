@@ -6,6 +6,7 @@ RUN apk --no-cache add nodejs mysql-client git bash python libcap py-setuptools 
 	&& rm -rf /var/lib/apt/lists/* \
 	&& gem install bundler \
 	&& gem install procodile \
+	&& gem install tzinfo-data \
 	&& addgroup -S postal \
 	&& adduser -S -G postal -h /opt/postal -s /bin/bash postal \
 	&& chown -R postal:postal /opt/postal/ \
