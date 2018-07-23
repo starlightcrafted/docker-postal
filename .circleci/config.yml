@@ -6,7 +6,7 @@ jobs:
       - checkout
       - run: 
           name: Build Postal Docker Container
-          command: docker build -t catdeployed/postal:dev .
+          command: docker build -t catdeployed/postal:latest .
       - run:
           name: Skip this job for Pull Requests
           command: '[[ -v CIRCLE_PR_NUMBER ]] && circleci step halt || true'
@@ -15,8 +15,7 @@ jobs:
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run:
           name: Push to Docker Hub
-          command: docker push catdeployed/postal:dev
-
+          command: docker push catdeployed/postal:latest
 workflows:
   version: 2
   nightly:
