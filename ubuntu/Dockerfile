@@ -1,12 +1,11 @@
 FROM ruby:2.4-alpine
 
-RUN apk --no-cache add nodejs mysql-client git bash python libcap py-setuptools py-pip build-base python-dev mariadb-dev tzdata \
+RUN apk --no-cache add nodejs mysql-client git bash python libcap py-setuptools py-pip build-base python-dev mariadb-dev \
 	&& pip install j2cli \
         && git clone https://github.com/atech/postal.git /opt/postal \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& gem install bundler \
 	&& gem install procodile \
-	&& gem install tzinfo-data \
 	&& addgroup -S postal \
 	&& adduser -S -G postal -h /opt/postal -s /bin/bash postal \
 	&& chown -R postal:postal /opt/postal/ \

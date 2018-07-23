@@ -18,6 +18,27 @@ jobs:
       - run:
           name: Push to Docker Hub
           command: docker push catdeployed/postal:latest
+      - run:
+          name: Push to Docker Hub
+          command: docker push catdeployed/postal:alpine
+  build-ubuntu:
+    machine: true
+    working_directory: ~/repo/ubuntu
+    steps:
+      - checkout:
+          path: ~/repo
+      - run:
+          name: Build Postal Docker Container
+          command: docker build -t catdeployed/postal:ubuntu .
+      - run:
+          name: Skip this job for Pull Requests
+          command: '[[ -v CIRCLE_PR_NUMBER ]] && circleci step halt || true'
+      - run:
+          name: Login to Docker Hub
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run:
+          name: Push to Docker Hub
+          command: docker push catdeployed/postal:latest
 workflows:
   version: 2
   nightly:
@@ -30,6 +51,8 @@ workflows:
                 - master
     jobs:
       - build-alpine
+      - build-ubuntu
   commit:
     jobs:
       - build-alpine
+      - build-ubuntu
