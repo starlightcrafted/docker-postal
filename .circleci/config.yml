@@ -30,5 +30,4 @@ workflows:
       - build
   commit:
     jobs:
-      - build:
-          context: Docker Hub
+      - build
