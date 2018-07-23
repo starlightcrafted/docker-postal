@@ -1,6 +1,6 @@
 FROM ruby:2.4-alpine
 
-RUN apk --no-cache add nodejs mysql-client git bash python libcap py-setuptools py-pip build-base python-dev mariadb-dev \
+RUN apk --no-cache add nodejs mysql-client git bash python libcap py-setuptools py-pip build-base python-dev mariadb-dev tzdata \
 	&& pip install j2cli \
         && git clone https://github.com/atech/postal.git /opt/postal \
 	&& rm -rf /var/lib/apt/lists/* \
