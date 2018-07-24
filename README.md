@@ -1,4 +1,4 @@
-#### Alpine Linux Container
+#### Alpine Linux Container (Default)
 ![](https://images.microbadger.com/badges/image/catdeployed/postal:alpine.svg) ![](https://img.shields.io/microbadger/layers/catdeployed/postal/alpine.svg)
 
 #### Ubuntu Linux Container
