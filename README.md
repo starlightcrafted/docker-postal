@@ -1,5 +1,5 @@
 #### Alpine Linux Container
-(https://images.microbadger.com/badges/image/catdeployed/postal:alpine.svg)(https://img.shields.io/microbadger/layers/catdeployed/postal/ubuntu.svg)
+![](https://images.microbadger.com/badges/image/catdeployed/postal:alpine.svg) ![](https://img.shields.io/microbadger/layers/catdeployed/postal/ubuntu.svg)
 
 #### Ubuntu Linux Container
 [![](https://images.microbadger.com/badges/image/catdeployed/postal:ubuntu.svg)](https://microbadger.com/images/catdeployed/postal:ubuntu)
