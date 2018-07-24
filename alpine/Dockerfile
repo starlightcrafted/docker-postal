@@ -1,6 +1,6 @@
 FROM ruby:2.4-alpine
 
-RUN apk --no-cache add nodejs mysql-client git bash python libcap py-setuptools py-pip build-base python-dev mariadb-dev tzdata \
+RUN apk --no-cache add nodejs mariadb-client git bash python2 libcap py-setuptools py-pip build-base python-dev mariadb-dev tzdata \
 	&& pip install j2cli \
         && git clone https://github.com/atech/postal.git /opt/postal \
 	&& rm -rf /var/lib/apt/lists/* \
@@ -11,6 +11,7 @@ RUN apk --no-cache add nodejs mysql-client git bash python libcap py-setuptools 
 	&& adduser -S -G postal -h /opt/postal -s /bin/bash postal \
 	&& chown -R postal:postal /opt/postal/ \
 	&& /opt/postal/bin/postal bundle /opt/postal/vendor/bundle \
+	&& apk del mariadb-dev git \
 	&& rm -rf /var/cache/apk/*
 
 ## Adjust permissions
