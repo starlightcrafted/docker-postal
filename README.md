@@ -1,4 +1,4 @@
-[![Build Status](https://semaphoreci.com/api/v1/alinuxninja/docker-postal/branches/master/badge.svg)](https://semaphoreci.com/alinuxninja/docker-postal) [![](https://images.microbadger.com/badges/image/alinuxninja/postal.svg)](https://microbadger.com/images/alinuxninja/postal) [![](https://images.microbadger.com/badges/version/alinuxninja/postal.svg)](https://microbadger.com/images/alinuxninja/postal) [![](https://images.microbadger.com/badges/version/alinuxninja/postal.svg)](https://hub.docker.com/r/alinuxninja/postal/)
+[![Docker Stars](https://img.shields.io/docker/stars/_/ubuntu.svg)](https://hub.docker.com/r/catdeployed/postal/)
 
 By default, docker-compose.yml uses Docker Hub for the image and does not do building, though it can be set to build from the included Dockerfile if needed. Images are built each hour by [Semaphore](https://semaphoreci.com/)
 
