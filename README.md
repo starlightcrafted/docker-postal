@@ -1,8 +1,8 @@
 #### Alpine Linux Container
-![](https://images.microbadger.com/badges/image/catdeployed/postal:alpine.svg) ![](https://img.shields.io/microbadger/layers/catdeployed/postal/ubuntu.svg)
+![](https://images.microbadger.com/badges/image/catdeployed/postal:alpine.svg) ![](https://img.shields.io/microbadger/layers/catdeployed/postal/alpine.svg)
 
 #### Ubuntu Linux Container
-[![](https://images.microbadger.com/badges/image/catdeployed/postal:ubuntu.svg)](https://microbadger.com/images/catdeployed/postal:ubuntu)
+![](https://images.microbadger.com/badges/image/catdeployed/postal:ubuntu.svg) ![](https://img.shields.io/microbadger/layers/catdeployed/postal/ubuntu.svg)
 
 [![Docker Stars](https://img.shields.io/docker/stars/catdeployed/postal.svg)](https://hub.docker.com/r/catdeployed/postal/) [![Docker Pulls](https://img.shields.io/docker/pulls/catdeployed/postal.svg)](https://hub.docker.com/r/catdeployed/postal/)
 
