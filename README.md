@@ -1,4 +1,4 @@
-[![Docker Stars](https://img.shields.io/docker/stars/catdeployed/postal.svg)](https://hub.docker.com/r/catdeployed/postal/)[![Docker Pulls](https://img.shields.io/docker/pulls/catdeployed/postal.svg)](https://hub.docker.com/r/catdeployed/postal/)
+[![Docker Stars](https://img.shields.io/docker/stars/catdeployed/postal.svg)](https://hub.docker.com/r/catdeployed/postal/) [![Docker Pulls](https://img.shields.io/docker/pulls/catdeployed/postal.svg)](https://hub.docker.com/r/catdeployed/postal/)
 
 By default, docker-compose.yml uses Docker Hub for the image and does not do building, though it can be set to build from the included Dockerfile if needed. Images are built each hour by [Semaphore](https://semaphoreci.com/)
 
