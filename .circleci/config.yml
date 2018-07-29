@@ -27,7 +27,7 @@ jobs:
           command: docker build -t catdeployed/postal:ubuntu .
       - run:
           name: Export Container
-          command: mkdir workspace && cd workspace && docker save --output postal_alpine.tar catdeployed/postal:ubuntu
+          command: mkdir workspace && cd workspace && docker save --output postal_ubuntu.tar catdeployed/postal:ubuntu
       - persist_to_workspace:
           root: workspace
           paths:
