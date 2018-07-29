@@ -61,6 +61,15 @@ workflows:
     jobs:
       - build-alpine
       - build-ubuntu
+      - deploy:
+          requires:
+            - build-alpine
+            - build-ubuntu
+          filters:
+            branches:
+              only:
+                - master
+                - dev
 notify:
   webhooks:
     - url: https://hooks.microbadger.com/images/catdeployed/postal/K0vCLtQnFFKukT-LuAEBmGD0cHs=
