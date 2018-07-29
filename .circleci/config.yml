@@ -36,6 +36,14 @@ jobs:
     machine: true
     working_directory: ~/repo/ubuntu
     steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Load Alpine Image
+          command: docker load --input /tmp/workspace/postal_alpine.tar
+      - run:
+          name: Load Ubuntu Image
+          command: docker load --input /tmp/workspace/postal_ubuntu.tar
       - run:
           name: Login to Docker Hub
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS
