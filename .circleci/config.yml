@@ -34,10 +34,6 @@ jobs:
       - run:
           name: Login to Docker Hub
           command: docker push catdeployed/postal:ubuntu
-  push-alpine:
-    machine: true
-    working_directory: ~/repo/ubuntu
-    steps:
 workflows:
   version: 2
   nightly:
