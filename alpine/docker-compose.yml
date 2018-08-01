@@ -1,7 +1,7 @@
 version: "3"
 services:
   postal:
-    image: catdeployed/postal:latest
+    image: catdeployed/postal:alpine
     container_name: postal
     command: run
     ports:
@@ -38,7 +38,7 @@ services:
     image: nginx
     restart: always
     ports:
-      - 127.0.0.1:80:80
+      - 0.0.0.0:80:80
     links:
       - postal
     depends_on:
