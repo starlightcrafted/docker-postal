@@ -10,17 +10,12 @@ jobs:
           name: Build Postal Docker Container
           command: docker build -t catdeployed/postal:latest -t catdeployed/postal:alpine .
       - run:
-          name: Skip this job for Pull Requests
-          command: '[[ -v CIRCLE_PR_NUMBER ]] && circleci step halt || true'
-      - run:
-          name: Login to Docker Hub
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
-      - run:
-          name: Push to Docker Hub
-          command: docker push catdeployed/postal:latest
-      - run:
-          name: Push to Docker Hub
-          command: docker push catdeployed/postal:alpine
+          name: Export Container
+          command: mkdir workspace && cd workspace && docker save --output postal_alpine.tar catdeployed/postal:alpine       
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - postal_alpine.tar
   build-ubuntu:
     machine: true
     working_directory: ~/repo/ubuntu
@@ -31,14 +26,39 @@ jobs:
           name: Build Postal Docker Container
           command: docker build -t catdeployed/postal:ubuntu .
       - run:
-          name: Skip this job for Pull Requests
-          command: '[[ -v CIRCLE_PR_NUMBER ]] && circleci step halt || true'
+          name: Export Container
+          command: mkdir workspace && cd workspace && docker save --output postal_ubuntu.tar catdeployed/postal:ubuntu
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - postal_ubuntu.tar
+  deploy:
+    machine: true
+    working_directory: ~/repo/ubuntu
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Load Alpine Image
+          command: docker load --input /tmp/workspace/postal_alpine.tar
+      - run:
+          name: Load Ubuntu Image
+          command: docker load --input /tmp/workspace/postal_ubuntu.tar
+      - run:
+          name: Tag alpine image as latest
+          command: docker tag catdeployed/postal:alpine catdeployed/postal:latest
       - run:
           name: Login to Docker Hub
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run:
-          name: Push to Docker Hub
+          name: Push Ubuntu Container to Docker Hub
           command: docker push catdeployed/postal:ubuntu
+      - run:
+          name: Push Alpine Container to Docker Hub
+          command: docker push catdeployed/postal:alpine
+      - run:
+          name: Push Latest Container to Docker Hub
+          command: docker push catdeployed/postal:latest
 workflows:
   version: 2
   nightly:
@@ -49,10 +69,32 @@ workflows:
             branches:
               only:
                 - master
+                - dev
     jobs:
       - build-alpine
       - build-ubuntu
+      - deploy:
+          requires:
+            - build-alpine
+            - build-ubuntu
+          filters:
+            branches:
+              only: 
+                - master
+                - dev
   commit:
     jobs:
       - build-alpine
       - build-ubuntu
+      - deploy:
+          requires:
+            - build-alpine
+            - build-ubuntu
+          filters:
+            branches:
+              only:
+                - master
+                - dev
+notify:
+  webhooks:
+    - url: https://hooks.microbadger.com/images/catdeployed/postal/K0vCLtQnFFKukT-LuAEBmGD0cHs=
