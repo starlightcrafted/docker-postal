@@ -4,6 +4,7 @@ RUN apk --no-cache add nodejs mariadb-client git bash python2 libcap py-setuptoo
 	&& pip install j2cli \
         && git clone https://github.com/atech/postal.git /opt/postal \
 	&& rm -rf /var/lib/apt/lists/* \
+	&& gem install tzinfo-data \
 	&& gem install bundler \
 	&& gem install procodile \
 	&& gem install tzinfo-data \
