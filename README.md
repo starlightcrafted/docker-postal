@@ -42,5 +42,6 @@ The initial design for the container was to be simple, minimal, and customizable
 - v2.0.0
   * Update to more reliable version of YAML management system
   * Split into ubuntu and alpine images
+  * Moved to CircleCI for more advanced building
 - v1.0.0
   * Initial Release
