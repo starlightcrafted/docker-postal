@@ -36,7 +36,7 @@ services:
       - RABBITMQ_DEFAULT_VHOST=/postal
   nginx:
     image: nginx
-    restart: always
+    container_name: postal_nginx
     ports:
       - 0.0.0.0:80:80
     links:
