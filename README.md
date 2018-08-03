@@ -1,12 +1,12 @@
 #### Alpine Linux Container (Default)
-![](https://images.microbadger.com/badges/image/catdeployed/postal:alpine.svg) ![](https://img.shields.io/microbadger/layers/catdeployed/postal/alpine.svg)
+[![](https://images.microbadger.com/badges/image/catdeployed/postal:alpine.svg)](https://hub.docker.com/r/catdeployed/postal/) [![](https://img.shields.io/microbadger/layers/catdeployed/postal/alpine.svg)](https://hub.docker.com/r/catdeployed/postal/)
 
 For this container, use the 'alpine' folder.
 
 #### Ubuntu Linux Container
-![](https://images.microbadger.com/badges/image/catdeployed/postal:ubuntu.svg) ![](https://img.shields.io/microbadger/layers/catdeployed/postal/ubuntu.svg)
+[![](https://images.microbadger.com/badges/image/catdeployed/postal:ubuntu.svg)](https://hub.docker.com/r/catdeployed/postal/) [![](https://img.shields.io/microbadger/layers/catdeployed/postal/ubuntu.svg)](https://hub.docker.com/r/catdeployed/postal/)
 
-For this container, use the 'ubuntu' folder
+For this container, use the 'ubuntu' folder.
 
 ### Instructions
 Change configuration in docker-compose.yml to update passwords for MySQL/RabbitMQ. Note that both passwords in the `postal` service, `mysql` service and `rabbitmq` service have to be changed to the same values.
