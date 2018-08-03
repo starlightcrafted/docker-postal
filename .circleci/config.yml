@@ -6,12 +6,12 @@ jobs:
     steps:
       - checkout:
           path: ~/repo
-      - run: 
+      - run:
           name: Build Postal Docker Container
           command: docker build -t catdeployed/postal:latest -t catdeployed/postal:alpine .
       - run:
           name: Export Container
-          command: mkdir workspace && cd workspace && docker save --output postal_alpine.tar catdeployed/postal:alpine       
+          command: mkdir workspace && cd workspace && docker save --output postal_alpine.tar catdeployed/postal:alpine
       - persist_to_workspace:
           root: workspace
           paths:
@@ -111,7 +111,7 @@ workflows:
             - build-ubuntu
           filters:
             branches:
-              only: 
+              only:
                 - master
   commit:
     jobs:
@@ -133,6 +133,3 @@ workflows:
             branches:
               only:
                 - dev
-notify:
-  webhooks:
-    - url: https://hooks.microbadger.com/images/catdeployed/postal/K0vCLtQnFFKukT-LuAEBmGD0cHs=
