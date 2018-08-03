@@ -36,3 +36,11 @@ Port mappings may change (as they have in the past). If SMTP/HTTP(s) is not work
 
 ### Anti-Spam / Antivirus
 The initial design for the container was to be simple, minimal, and customizable, so Spamassassin and ClamAV are not included by default. Feel free to fork and add to the Dockerfile (though you must set docker-compose.yml to build from Dockerfile and not pull an image), or add them by linking additional containers.
+
+### Updates
+
+- v2.0.0
+  * Update to more reliable version of YAML management system
+  * Split into ubuntu and alpine images
+- v1.0.0
+  * Initial Release
