@@ -133,3 +133,6 @@ workflows:
             branches:
               only:
                 - dev
+notify:
+  webhooks:
+    - url: https://hooks.microbadger.com/images/catdeployed/postal/K0vCLtQnFFKukT-LuAEBmGD0cHs=
