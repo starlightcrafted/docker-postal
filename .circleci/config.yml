@@ -76,7 +76,7 @@ jobs:
           command: docker tag catdeployed/postal:alpine catdeployed/postal:alpine-dev
       - run:
           name: Rename Ubuntu Image Tag
-          command: docker tag catdeployed/ubuntu:ubuntu catdeployed/postal:ubuntu-dev
+          command: docker tag catdeployed/postal:ubuntu catdeployed/postal:ubuntu-dev
       - run:
           name: Tag alpine image as latest
           command: docker tag catdeployed/postal:alpine catdeployed/postal:latest-dev
