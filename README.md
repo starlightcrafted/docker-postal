@@ -1,13 +1,15 @@
 #### Alpine Linux Container (Default)
 ![](https://images.microbadger.com/badges/image/catdeployed/postal:alpine.svg) ![](https://img.shields.io/microbadger/layers/catdeployed/postal/alpine.svg)
 
+For this container, use the 'alpine' folder.
+
 #### Ubuntu Linux Container
 ![](https://images.microbadger.com/badges/image/catdeployed/postal:ubuntu.svg) ![](https://img.shields.io/microbadger/layers/catdeployed/postal/ubuntu.svg)
 
-By default, docker-compose.yml uses Docker Hub for the image and does not do building, though it can be set to build from the included Dockerfile if needed. Images are built each hour by [Semaphore](https://semaphoreci.com/)
+For this container, use the 'ubuntu' folder
 
 ### Instructions
-Change configuration in docker-compose.yml to update passwords for MySQL/RabbitMQ. Note that both passwords in the `postal` service, `mysql` service and `rabbitmq` service have to be changed.
+Change configuration in docker-compose.yml to update passwords for MySQL/RabbitMQ. Note that both passwords in the `postal` service, `mysql` service and `rabbitmq` service have to be changed to the same values.
 
 Then, begin by following the directions at https://github.com/atech/postal/wiki/Installation#initialize-database--assets.
 Postal can be accessed by checking the section below. Note that `postal intialize-config` is already run for you, as the database parameters need to be configured to match the environment variables before the postal tool can be used.
