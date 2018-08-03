@@ -7,6 +7,7 @@ RUN apt-get -y update \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& gem install bundler \
 	&& gem install procodile \
+	&& gem install tzinfo-data \
 	&& useradd -r -d /opt/postal -s /bin/bash postal \
 	&& chown -R postal:postal /opt/postal/ \
 	&& /opt/postal/bin/postal bundle /opt/postal/vendor/bundle \
