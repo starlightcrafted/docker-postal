@@ -59,6 +59,39 @@ jobs:
       - run:
           name: Push Latest Container to Docker Hub
           command: docker push catdeployed/postal:latest
+  deploy-dev:
+    machine: true
+    working_directory: ~/repo/ubuntu
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Load Alpine Image
+          command: docker load --input /tmp/workspace/postal_alpine.tar
+      - run:
+          name: Load Ubuntu Image
+          command: docker load --input /tmp/workspace/postal_ubuntu.tar
+      - run:
+          name: Rename Alpine Image Tag
+          command: docker tag catdeployed/postal:alpine catdeployed/postal:alpine-dev
+      - run:
+          name: Rename Ubuntu Image Tag
+          command: docker tag catdeployed/ubuntu:ubuntu catdeployed/postal:ubuntu-dev
+      - run:
+          name: Tag alpine image as latest
+          command: docker tag catdeployed/postal:alpine catdeployed/postal:latest-dev
+      - run:
+          name: Login to Docker Hub
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run:
+          name: Push Ubuntu Container to Docker Hub
+          command: docker push catdeployed/postal:ubuntu-dev
+      - run:
+          name: Push Alpine Container to Docker Hub
+          command: docker push catdeployed/postal:alpine-dev
+      - run:
+          name: Push Latest Container to Docker Hub
+          command: docker push catdeployed/postal:latest-dev
 workflows:
   version: 2
   nightly:
@@ -69,7 +102,6 @@ workflows:
             branches:
               only:
                 - master
-                - dev
     jobs:
       - build-alpine
       - build-ubuntu
@@ -81,7 +113,6 @@ workflows:
             branches:
               only: 
                 - master
-                - dev
   commit:
     jobs:
       - build-alpine
@@ -94,6 +125,13 @@ workflows:
             branches:
               only:
                 - master
+      - deploy-dev:
+          requires:
+            - build-alpine
+            - build-ubuntu
+          filters:
+            branches:
+              only:
                 - dev
 notify:
   webhooks:
