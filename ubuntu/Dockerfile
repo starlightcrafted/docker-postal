@@ -1,8 +1,13 @@
-FROM ruby:2.4
+FROM ruby:2.6-rc
+
+RUN curl -L https://github.com/wrouesnel/p2cli/releases/download/r5/p2 -o /usr/local/bin/p2 \
+        && chmod +x /usr/local/bin/p2
+
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+        && apt-get install -y nodejs
 
 RUN apt-get -y update \
-	&& apt-get -y install --no-install-recommends nodejs mysql-client git-core python-minimal python-pip python-dev libcap2-bin python-setuptools \
-	&& pip install j2cli \
+	&& apt-get -y install --no-install-recommends nodejs mysql-client git-core libcap2-bin \
         && git clone https://github.com/atech/postal.git /opt/postal \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& gem install bundler \
@@ -26,4 +31,5 @@ ADD src/templates /templates
 EXPOSE 5000
 
 ## Startup
+# ENV RUBYOPT --jit
 ENTRYPOINT ["/bin/bash", "-c", "/docker-entrypoint.sh ${*}", "--"]
