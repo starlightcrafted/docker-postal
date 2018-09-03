@@ -3,7 +3,7 @@
 ## Generate config
 if [ ! -f /opt/postal/config/postal.yml ] || [[ $(cat /opt/postal/config/postal.yml | wc -l) < 2 ]]; then
 	## Build Jinja2 Template
-	j2 /templates/postal.example.yml.j2 > /opt/postal/config/postal.example.yml
+	p2 -t /templates/postal.example.yml.j2 -o /opt/postal/config/postal.example.yml
 	## Add in secret key building
 	echo "rails:" >> /opt/postal/config/postal.example.yml
 	echo "  secret_key: {{secretkey}}" >> /opt/postal/config/postal.example.yml

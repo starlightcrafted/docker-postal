@@ -1,12 +1,12 @@
 #### Alpine Linux Container (Default)
-![](https://images.microbadger.com/badges/image/catdeployed/postal:alpine.svg) ![](https://img.shields.io/microbadger/layers/catdeployed/postal/alpine.svg)
+[![](https://images.microbadger.com/badges/image/catdeployed/postal:alpine.svg)](https://hub.docker.com/r/catdeployed/postal/) [![](https://img.shields.io/microbadger/layers/catdeployed/postal/alpine.svg)](https://hub.docker.com/r/catdeployed/postal/)
 
 For this container, use the 'alpine' folder.
 
 #### Ubuntu Linux Container
-![](https://images.microbadger.com/badges/image/catdeployed/postal:ubuntu.svg) ![](https://img.shields.io/microbadger/layers/catdeployed/postal/ubuntu.svg)
+[![](https://images.microbadger.com/badges/image/catdeployed/postal:ubuntu.svg)](https://hub.docker.com/r/catdeployed/postal/) [![](https://img.shields.io/microbadger/layers/catdeployed/postal/ubuntu.svg)](https://hub.docker.com/r/catdeployed/postal/)
 
-For this container, use the 'ubuntu' folder
+For this container, use the 'ubuntu' folder.
 
 ### Instructions
 Change configuration in docker-compose.yml to update passwords for MySQL/RabbitMQ. Note that both passwords in the `postal` service, `mysql` service and `rabbitmq` service have to be changed to the same values.
@@ -36,3 +36,12 @@ Port mappings may change (as they have in the past). If SMTP/HTTP(s) is not work
 
 ### Anti-Spam / Antivirus
 The initial design for the container was to be simple, minimal, and customizable, so Spamassassin and ClamAV are not included by default. Feel free to fork and add to the Dockerfile (though you must set docker-compose.yml to build from Dockerfile and not pull an image), or add them by linking additional containers.
+
+### Updates
+
+- v2.0.0
+  * Update to more reliable version of YAML management system
+  * Split into ubuntu and alpine images
+  * Moved to CircleCI for more advanced building
+- v1.0.0
+  * Initial Release

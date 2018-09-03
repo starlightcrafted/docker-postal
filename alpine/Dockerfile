@@ -1,7 +1,9 @@
-FROM ruby:2.5-alpine
+FROM ruby:2.6-rc-alpine
 
-RUN apk --no-cache add nodejs mariadb-client git bash python2 libcap py-setuptools py-pip build-base mariadb-dev tzdata mariadb-client-libs \
-	&& pip install j2cli \
+RUN wget https://github.com/wrouesnel/p2cli/releases/download/r5/p2 -O /usr/local/bin/p2 \
+        && chmod +x /usr/local/bin/p2
+
+RUN apk --no-cache add nodejs mariadb-client git bash libcap build-base mariadb-dev tzdata mariadb-client-libs \
         && git clone https://github.com/atech/postal.git /opt/postal \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& gem install bundler \
@@ -25,4 +27,5 @@ ADD src/templates /templates
 EXPOSE 5000
 
 ## Startup
+# ENV RUBYOPT --jit
 ENTRYPOINT ["/bin/bash", "-c", "/docker-entrypoint.sh ${*}", "--"]
