@@ -1,4 +1,4 @@
-FROM ruby:2.6-rc-alpine
+FROM ruby:2.6-alpine
 
 RUN wget https://github.com/wrouesnel/p2cli/releases/download/r5/p2 -O /usr/local/bin/p2 \
         && chmod +x /usr/local/bin/p2
