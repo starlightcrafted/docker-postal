@@ -3,7 +3,7 @@ FROM ruby:2.6-alpine
 RUN wget https://github.com/wrouesnel/p2cli/releases/download/r5/p2 -O /usr/local/bin/p2 \
         && chmod +x /usr/local/bin/p2
 
-RUN apk --no-cache add nodejs mariadb-client git bash libcap build-base mariadb-dev tzdata \
+RUN apk --no-cache add nodejs mariadb-client git bash libcap build-base mariadb-dev tzdata mariadb-connector-c \
         && git clone https://github.com/atech/postal.git /opt/postal \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& gem install bundler \
