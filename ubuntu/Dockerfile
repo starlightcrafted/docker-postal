@@ -1,4 +1,4 @@
-FROM ruby:2.6-rc
+FROM ruby:2.6
 
 RUN curl -L https://github.com/wrouesnel/p2cli/releases/download/r5/p2 -o /usr/local/bin/p2 \
         && chmod +x /usr/local/bin/p2
