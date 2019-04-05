@@ -11,9 +11,13 @@ For this container, use the 'ubuntu' folder.
 ### Instructions
 Change configuration in docker-compose.yml to update passwords for MySQL/RabbitMQ. Note that both passwords in the `postal` service, `mysql` service and `rabbitmq` service have to be changed to the same values.
 
-Then, begin by following the directions at https://github.com/atech/postal/wiki/Installation#initialize-database--assets.
-Postal can be accessed by checking the section below. Note that `postal intialize-config` is already run for you, as the database parameters need to be configured to match the environment variables before the postal tool can be used.
+#### Initialize Database
+```docker-compose run postal initialize```
 
+#### Create User
+```docker-compose run postal make-user```
+
+#### Running Container
 After configuration is done, run the following to bring the container up.
 ```
 docker-compose up -d
