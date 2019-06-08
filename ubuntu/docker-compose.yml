@@ -2,7 +2,6 @@ version: "3"
 services:
   postal:
     image: catdeployed/postal:ubuntu
-    container_name: postal
     command: run
     ports:
       - 127.0.0.1:25:25
@@ -21,7 +20,6 @@ services:
       - RABBITMQ_DEFAULT_VHOST=postal
   mysql:
     image: mariadb:10
-    container_name: postal_mysql
     volumes:
       - ./data/mysql:/var/lib/mysql
     environment:
@@ -36,7 +34,6 @@ services:
       - RABBITMQ_DEFAULT_VHOST=/postal
   nginx:
     image: nginx
-    container_name: postal_nginx
     ports:
       - 80:80
     links:
