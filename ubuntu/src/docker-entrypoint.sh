@@ -14,7 +14,7 @@ cat /opt/postal/config/postal.yml
 
 ## Clean Up
 rm -rf /opt/postal/tmp/pids/*
-
+rm -rf /tmp/postal
 ## Wait for MySQL to start up
 echo "== Waiting for MySQL to start up =="
 while ! mysqladmin ping -h mysql --silent; do
