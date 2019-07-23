@@ -7,7 +7,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
         && apt-get install -y nodejs
 
 RUN apt-get -y update \
-	&& apt-get -y install --no-install-recommends nodejs mysql-client git-core libcap2-bin \
+	&& apt-get -y install --no-install-recommends nodejs mariadb-client git-core libcap2-bin \
         && git clone https://github.com/atech/postal.git /opt/postal \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& gem install bundler \
