@@ -1,7 +1,15 @@
+#variables:
 before_script:
   - docker info
 
-build_image:
+build-docker-alpine:
+  stage: docker-build
   script:
     - cd alpine
-    - docker build --network=host -t catdeployed/postal:latest -t catdeployed/postal:alpine .
+    - docker build --network=host -t catdeployed/postal:alpine .
+
+build-docker-ubuntu:
+  stage: docker-build
+  script:
+    - cd ubuntu
+    - docker build --network=host -t catdeployed/postal:ubuntu .
