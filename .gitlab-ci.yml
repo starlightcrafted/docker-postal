@@ -2,6 +2,10 @@
 before_script:
   - docker info
 
+stages:
+  - docker-build
+
+
 build-docker-alpine:
   stage: docker-build
   script:
