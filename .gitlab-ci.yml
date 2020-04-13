@@ -15,7 +15,7 @@ build-docker-alpine:
     - docker save -o postal-alpine-container.tar catdeployed/postal:alpine
   artifacts:
     paths:
-    - postal-alpine-container.tar
+    - alpine/postal-alpine-container.tar
 
 build-docker-ubuntu:
   stage: docker-build
