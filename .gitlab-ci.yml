@@ -1,0 +1,7 @@
+before_script:
+  - docker info
+
+build_image:
+  script:
+    - cd alpine
+    - docker build --network=host -t catdeployed/postal:latest -t catdeployed/postal:alpine .
