@@ -25,12 +25,12 @@ build-docker-ubuntu:
     - docker save -o postal-ubuntu-container.tar catdeployed/postal:ubuntu
   artifacts:
     paths:
-    - postal-ubuntu-container.tar
+    - ubuntu/postal-ubuntu-container.tar
 
 test-docker-ubuntu:
   stage: tests
   script:
-    - docker load -i postal-ubuntu-container.tar
+    - docker load -i ubuntu/postal-ubuntu-container.tar
     - docker run -i catdeployed/postal:ubuntu /opt/postal/bin/postal make-user
 
 docker-cleanup:
