@@ -22,7 +22,7 @@ build-docker-ubuntu:
 test-docker-ubuntu:
   stage: tests
   script:
-    - /opt/postal/bin/postal make-user
+    - docker run -i -t catdeployed/postal:ubuntu /opt/postal/bin/postal make-user
 
 docker-cleanup:
   stage: cleanup
