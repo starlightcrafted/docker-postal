@@ -18,6 +18,12 @@ build-docker-ubuntu:
   script:
     - cd ubuntu
     - docker build --network=host -t catdeployed/postal:ubuntu .
+
+test-docker-ubuntu:
+  stage: tests
+  script:
+    - /opt/postal/bin/postal make-user
+
 docker-cleanup:
   stage: cleanup
   script:
