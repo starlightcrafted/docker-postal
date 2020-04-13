@@ -4,8 +4,8 @@ before_script:
 
 stages:
   - docker-build
+  - tests
   - cleanup
-
 
 build-docker-alpine:
   stage: docker-build
