@@ -4,6 +4,7 @@ before_script:
 
 stages:
   - docker-build
+  - cleanup
 
 
 build-docker-alpine:
@@ -17,3 +18,7 @@ build-docker-ubuntu:
   script:
     - cd ubuntu
     - docker build --network=host -t catdeployed/postal:ubuntu .
+cleanup
+  stage: cleanup
+  script:
+    - docker system prune -af
