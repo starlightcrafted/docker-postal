@@ -31,9 +31,8 @@ test-docker-ubuntu:
   stage: tests
   script:
     - docker load -i ubuntu/postal-ubuntu-container.tar
-    - docker run -i catdeployed/postal:ubuntu /opt/postal/bin/postal make-user
+    - docker-compose up -d
+    - docker-compose run postal initialize
 
-docker-cleanup:
-  stage: cleanup
-  script:
-    - docker system prune -af
+after_script:
+  - docker system prune -af
