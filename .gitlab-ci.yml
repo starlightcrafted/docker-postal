@@ -30,9 +30,12 @@ build-docker-ubuntu:
 test-docker-ubuntu:
   stage: tests
   script:
-    - docker load -i ubuntu/postal-ubuntu-container.tar
+    - cd ubuntu
+    - docker load -i postal-ubuntu-container.tar
     - docker-compose up -d
     - docker-compose run postal initialize
 
 after_script:
-  - docker system prune -af
+  - docker container prune -f
+  - docker image prune -f
+  - docker system prune -af --volumes
