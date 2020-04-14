@@ -11,7 +11,7 @@ services:
       - "rabbitmq"
     volumes:
       - static_assets:/opt/postal/public
-      - ./data/postal/assets:/opt/postal/public/assets
+      - postal_assets:/opt/postal/public/assets
       - ./src/templates/:/templates
     environment:
       - MYSQL_ROOT_PASSWORD=changeme
@@ -23,7 +23,7 @@ services:
     image: mariadb:10
     container_name: postal_mysql
     volumes:
-      - ./data/mysql:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=changeme
       - MYSQL_DATABASE=postal
@@ -46,7 +46,8 @@ services:
     volumes:
       - ./src/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - static_assets:/opt/postal/public:ro
-      - ./data/postal/assets:/opt/postal/public/assets:ro
+      - postal_assets:/opt/postal/public/assets:ro
 volumes:
   static_assets:
-
+  postal_assets:
+  mysql_data:
