@@ -37,7 +37,17 @@ test-docker-ubuntu:
   after_script:
     - cd ubuntu
     - docker-compose rm -sfv
-    - docker run -i -v $(pwd):/cleandir -w /cleandir alpine rm -rf "/cleandir/data/*"
+
+test-docker-alpine:
+  stage: tests
+  script:
+    - cd alpine
+    - docker load -i postal-alpine-container.tar
+    - docker-compose up -d
+    - docker-compose run postal initialize
+  after_script:
+    - cd alpine
+    - docker-compose rm -sfv
 
 after_script:
   - docker container prune -f
