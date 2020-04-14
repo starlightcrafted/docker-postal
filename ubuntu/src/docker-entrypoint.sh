@@ -20,7 +20,7 @@ echo "== Waiting for MySQL to start up =="
 while ! mysqladmin ping -h mysql --silent; do
     sleep 0.5
 done
-while ! mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "$MYSQL_DATABASE" 2> /dev/null; do
+while ! mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "use $MYSQL_DATABASE" 2> /dev/null; do
     sleep 0.5
 done
 
