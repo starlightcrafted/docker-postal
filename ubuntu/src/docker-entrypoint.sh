@@ -20,6 +20,9 @@ echo "== Waiting for MySQL to start up =="
 while ! mysqladmin ping -h mysql --silent; do
     sleep 0.5
 done
+while ! mysql -u root -p"$MYSQL_ROOT_PASSWORD" -e 'use postal' 2> /dev/null; do
+    sleep 0.5
+done
 
 ## Start Postal
 /opt/postal/bin/postal "$@"
