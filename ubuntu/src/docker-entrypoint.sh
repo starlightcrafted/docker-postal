@@ -23,10 +23,10 @@ if [ ! -f /opt/postal/config/postal.yml ] || [[ $(cat /opt/postal/config/postal.
         done
 	/opt/postal/bin/postal initialize
 	/opt/postal/bin/postal make-user << EOF
-		"$POSTAL_EMAIL"
-		"$POSTAL_FNAME"
-                "$POSTAL_LNAME"
-                "$POSTAL_PASSWORD"
+		$POSTAL_EMAIL
+		$POSTAL_FNAME
+		$POSTAL_LNAME
+		$POSTAL_PASSWORD
 	EOF
 else
 
