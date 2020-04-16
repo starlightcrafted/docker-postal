@@ -19,6 +19,10 @@ services:
       - RABBITMQ_DEFAULT_USER=postal
       - RABBITMQ_DEFAULT_PASS=changeme
       - RABBITMQ_DEFAULT_VHOST=postal
+      - POSTAL_FNAME=Sia
+      - POSTAL_LNAME=Cat
+      - POSTAL_PASSWORD=SecretCatPassword
+      - POSTAL_EMAIL=myemail@catsworld.com
   mysql:
     image: mariadb:10
     container_name: postal_mysql
