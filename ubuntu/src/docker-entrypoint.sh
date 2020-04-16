@@ -27,7 +27,7 @@ if [ ! -f /opt/postal/config/postal.yml ] || [[ $(cat /opt/postal/config/postal.
 		"$POSTAL_FNAME"
                 "$POSTAL_LNAME"
                 "$POSTAL_PASSWORD"
-
+	EOF
 else
 
 	## Wait for MySQL to start up
