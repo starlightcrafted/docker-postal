@@ -23,6 +23,11 @@ services:
       - POSTAL_LNAME=Cat
       - POSTAL_PASSWORD=SecretCatPassword
       - POSTAL_EMAIL=myemail@catsworld.com
+    healthcheck:
+      test: curl -sS http://127.0.0.1:5000 || exit 1
+      interval: 5s
+      timeout: 10s
+      retries: 3
   mysql:
     image: mariadb:10
     container_name: postal_mysql
