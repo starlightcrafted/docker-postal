@@ -16,6 +16,7 @@ build-docker-alpine:
   artifacts:
     paths:
     - alpine/postal-alpine-container.tar
+    expire_in: 1 day
 
 build-docker-ubuntu:
   stage: build
@@ -26,6 +27,7 @@ build-docker-ubuntu:
   artifacts:
     paths:
     - ubuntu/postal-ubuntu-container.tar
+    expire_in: 1 day
 
 test-docker-ubuntu:
   stage: tests
@@ -54,7 +56,7 @@ upload-images:
   script:
     - docker load -i ubuntu/postal-ubuntu-container.tar
     - docker load -i alpine/postal-alpine-container.tar
-    - docker tag catdeployed/postal:alpine catdeployed:postal:latest
+    - docker tag catdeployed/postal:alpine catdeployed/postal:latest
     - docker login -u$DOCKER_USER -p$DOCKER_PASS
     - docker push catdeployed/postal:alpine
     - docker push catdeployed/postal:ubuntu
