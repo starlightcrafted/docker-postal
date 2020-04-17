@@ -5,6 +5,7 @@ before_script:
 stages:
   - build
   - tests
+  - upload
 
 build-docker-alpine:
   stage: build
@@ -48,6 +49,18 @@ test-docker-alpine:
     - cd alpine
     - docker-compose rm -sfv
 
+upload-images:
+  stage: upload
+  script:
+    - docker load -i ubuntu/postal-ubuntu-container.tar
+    - docker load -i alpine/postal-alpine-container.tar
+    - docker tag catdeployed/postal:alpine catdeployed:postal:latest
+    - docker login -u$DOCKER_USER -p$DOCKER_PASS
+    - docker push catdeployed/postal:alpine
+    - docker push catdeployed/postal:ubuntu
+    - docker push catdeployed/postal:latest
+  only:
+    - master@CatDeployed/docker-postal
 after_script:
   - docker container prune -f
   - docker image prune -f
