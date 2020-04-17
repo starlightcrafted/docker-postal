@@ -44,7 +44,7 @@ test-docker-alpine:
     - cd alpine
     - docker load -i postal-alpine-container.tar
     - docker-compose up -d
-    - docker-compose run postal initialize
+    - for i in {1..10}; do [ $(docker inspect postal | jq '.[].State.Health.Status') == "healthy" ] && break || sleep 30; done
   after_script:
     - cd alpine
     - docker-compose rm -sfv
