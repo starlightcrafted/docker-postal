@@ -15,18 +15,17 @@ For this container, use the 'alpine' folder.
 For this container, use the 'ubuntu' folder.
 
 ### Instructions
-Change configuration in docker-compose.yml to update passwords for MySQL/RabbitMQ. Note that both passwords in the `postal` service, `mysql` service and `rabbitmq` service have to be changed to the same values.
+1.  Change the folder to either `ubuntu` or `alpine`, depending on which version you want to use
+2.  Open `docker-compose.yml`
+3.  Update `MYSQL_ROOT_PASSWORD` and `RABBITMQ_DEFAULT_PASS` everywhere in the file to new secret passwords
+4.  Update `POSTAL_FNAME` (First Name), `POSTAL_LNAME` (Last Name), `POSTAL_PASSWORD`, and `POSTAL_EMAIL` values in the file
+5.  Run `docker-compose up -d`
 
-#### Initialize Database and write assets
-```docker-compose run postal initialize```
+### Notes
+*  The `POSTAL_EMAIL` and `POSTAL_PASSWORD` values will be the email and password you use to login
+*  `POSTAL_EMAIL` and `POSTAL_PASSWORD` will only be used if there is a need to initialize the postal installation. As a result, changing them will not change the admin username or password while postal is already setup
+*  All the setup instructions are already run
 
-#### Create User
-```docker-compose run postal make-user```
-
-#### Running Container
-After configuration is done, run the following to bring the container up.
-```
-docker-compose up -d
 ```
 ### Using the `postal` tool.
 To use the `postal` tool, simply run
@@ -48,6 +47,10 @@ Port mappings may change (as they have in the past). If SMTP/HTTP(s) is not work
 The initial design for the container was to be simple, minimal, and customizable, so Spamassassin and ClamAV are not included by default. Feel free to fork and add to the Dockerfile (though you must set docker-compose.yml to build from Dockerfile and not pull an image), or add them by linking additional containers.
 
 ### Updates
+- v3.0.0
+  * Move to Gitlab with automated testing
+  * Add user creation system for more reliability
+  * Add some more checks on MySQL during startup
 
 - v2.0.0
   * Update to more reliable version of YAML management system
