@@ -34,7 +34,7 @@ test-docker-ubuntu:
     - docker load -i postal-ubuntu-container.tar
     - docker-compose up -d
     - sleep 300
-    - docker inspect postal | jq '.[].State.Health'
+    - docker inspect postal | jq '.[].State.Health.Status'
   after_script:
     - cd ubuntu
     - docker-compose rm -sfv
