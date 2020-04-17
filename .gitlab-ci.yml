@@ -3,12 +3,11 @@ before_script:
   - docker info
 
 stages:
-  - docker-build
+  - build
   - tests
-  - cleanup
 
 build-docker-alpine:
-  stage: docker-build
+  stage: build
   script:
     - cd alpine
     - docker build --network=host -t catdeployed/postal:alpine .
@@ -18,7 +17,7 @@ build-docker-alpine:
     - alpine/postal-alpine-container.tar
 
 build-docker-ubuntu:
-  stage: docker-build
+  stage: build
   script:
     - cd ubuntu
     - docker build --network=host -t catdeployed/postal:ubuntu .

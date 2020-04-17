@@ -1,5 +1,11 @@
+# docker-postal
+![](https://gitlab.catdeployed.net/CatDeployed/docker-postal/badges/master/pipeline.svg) ![](https://img.shields.io/docker/pulls/catdeployed/postal?style=flat-square)
+
+This project runs daily docker builds for postalhq/postal
+
+
 #### Alpine Linux Container (Default)
-[![](https://images.microbadger.com/badges/image/catdeployed/postal:alpine.svg)](https://hub.docker.com/r/catdeployed/postal/) [![](https://img.shields.io/microbadger/layers/catdeployed/postal/alpine.svg)](https://hub.docker.com/r/catdeployed/postal/)
+![](https://img.shields.io/badge/image-catdeployed%2Fpostal:alpine-blue?style=flat-square&logo=Docker) ![](https://img.shields.io/docker/image-size/catdeployed/postal/alpine?style=flat-square) ![](https://img.shields.io/microbadger/layers/catdeployed/postal/alpine?style=flat-square)
 
 For this container, use the 'alpine' folder.
 
