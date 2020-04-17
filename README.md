@@ -1,5 +1,5 @@
 # docker-postal
-![](https://gitlab.catdeployed.net/CatDeployed/docker-postal/badges/master/pipeline.svg) ![](https://img.shields.io/docker/pulls/catdeployed/postal?style=flat-square)
+![](https://gitlab.catdeployed.net/CatDeployed/docker-postal/badges/master/pipeline.svg?style=flat-square) ![](https://img.shields.io/docker/pulls/catdeployed/postal?style=flat-square)
 
 This project runs daily docker builds for postalhq/postal
 
@@ -10,7 +10,7 @@ This project runs daily docker builds for postalhq/postal
 For this container, use the 'alpine' folder.
 
 #### Ubuntu Linux Container
-[![](https://images.microbadger.com/badges/image/catdeployed/postal:ubuntu.svg)](https://hub.docker.com/r/catdeployed/postal/) [![](https://img.shields.io/microbadger/layers/catdeployed/postal/ubuntu.svg)](https://hub.docker.com/r/catdeployed/postal/)
+![](https://img.shields.io/badge/image-catdeployed%2Fpostal:ubuntu-blue?style=flat-square&logo=Docker) ![](https://img.shields.io/docker/image-size/catdeployed/postal/ubuntu?style=flat-square) ![](https://img.shields.io/microbadger/layers/catdeployed/postal/ubuntu?style=flat-square)
 
 For this container, use the 'ubuntu' folder.
 
