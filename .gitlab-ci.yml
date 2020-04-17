@@ -33,8 +33,7 @@ test-docker-ubuntu:
     - cd ubuntu
     - docker load -i postal-ubuntu-container.tar
     - docker-compose up -d
-    - sleep 300
-    - docker inspect postal | jq '.[].State.Health.Status'
+    - for i in {1..10}; do [ $(docker inspect postal | jq '.[].State.Health.Status') == "healthy" ] && break || sleep 30; done
   after_script:
     - cd ubuntu
     - docker-compose rm -sfv
