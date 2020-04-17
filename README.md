@@ -26,7 +26,6 @@ For this container, use the 'ubuntu' folder.
 *  `POSTAL_EMAIL` and `POSTAL_PASSWORD` will only be used if there is a need to initialize the postal installation. As a result, changing them will not change the admin username or password while postal is already setup
 *  All the setup instructions are already run
 
-```
 ### Using the `postal` tool.
 To use the `postal` tool, simply run
 ```
