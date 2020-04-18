@@ -1,9 +1,11 @@
 FROM ruby:2.6-alpine
 
+ENV DOCKERIZE_VERSION v0.6.1
+
 RUN wget https://github.com/wrouesnel/p2cli/releases/download/r5/p2 -O /usr/local/bin/p2 \
         && chmod +x /usr/local/bin/p2
 
-RUN apk --no-cache add nodejs mariadb-client git bash libcap build-base mariadb-dev tzdata mariadb-connector-c \
+RUN apk --no-cache add nodejs mariadb-client git bash libcap build-base mariadb-dev tzdata mariadb-connector-c openssl \
         && git clone https://github.com/atech/postal.git /opt/postal \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& gem install bundler \
@@ -15,6 +17,11 @@ RUN apk --no-cache add nodejs mariadb-client git bash libcap build-base mariadb-
 	&& /opt/postal/bin/postal bundle /opt/postal/vendor/bundle \
 	&& apk del git mariadb-dev \
 	&& rm -rf /var/cache/apk/*
+
+## Install jwilder/dockerize
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 ## Adjust permissions
 RUN setcap 'cap_net_bind_service=+ep' /usr/local/bin/ruby

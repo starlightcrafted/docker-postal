@@ -13,14 +13,9 @@ if [ ! -f /opt/postal/config/postal.yml ] || [[ $(cat /opt/postal/config/postal.
   echo "  secret_key: {{secretkey}}" >> /opt/postal/config/postal.example.yml
   ## Generate config and keys
   /opt/postal/bin/postal initialize-config
-  ## Wait for MySQL to start up
-  echo "== Waiting for MySQL to start up =="
-  while ! mysqladmin ping -h mysql --silent; do
-    sleep 0.5
-  done
-  while ! mysql -hmysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "use $MYSQL_DATABASE" 2> /dev/null; do
-    sleep 0.5
-  done
+  ## Wait for MySQL and RabbitMQ to start up
+  echo "== Waiting for MySQL and RabbitMQ to start up =="
+  dockerize -wait tcp://mysql:3306 -wait http://rabbitmq:5672/api/aliveness-test
   /opt/postal/bin/postal initialize
   /opt/postal/bin/postal make-user <<-EOF
 $POSTAL_EMAIL
@@ -29,14 +24,9 @@ $POSTAL_LNAME
 $POSTAL_PASSWORD
 EOF
 else
-  ## Wait for MySQL to start up
-  echo "== Waiting for MySQL to start up =="
-  while ! mysqladmin ping -h mysql --silent; do
-    sleep 0.5
-  done
-  while ! mysql -hmysql -u root -p"$MYSQL_ROOT_PASSWORD" -e "use $MYSQL_DATABASE" 2> /dev/null; do
-    sleep 0.5
-  done
+  ## Wait for MySQL and RabbitMQ to start up
+  echo "== Waiting for MySQL and RabbitMQ to start up =="
+  dockerize -wait tcp://mysql:3306 -wait http://rabbitmq:5672/api/aliveness-test
 fi
 ## Start Postal
 /opt/postal/bin/postal "$@"
