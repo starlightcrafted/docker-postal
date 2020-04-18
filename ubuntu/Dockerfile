@@ -1,4 +1,5 @@
 FROM ruby:2.6
+ENV DOCKERIZE_VERSION v0.6.1
 
 RUN curl -L https://github.com/wrouesnel/p2cli/releases/download/r5/p2 -o /usr/local/bin/p2 \
         && chmod +x /usr/local/bin/p2
@@ -7,7 +8,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
         && apt-get install -y nodejs
 
 RUN apt-get -y update \
-	&& apt-get -y install --no-install-recommends nodejs mariadb-client git-core libcap2-bin \
+	&& apt-get -y install --no-install-recommends nodejs mariadb-client git-core libcap2-bin wget \
         && git clone https://github.com/atech/postal.git /opt/postal \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& gem install bundler \
@@ -19,6 +20,10 @@ RUN apt-get -y update \
 	&& apt-get -y purge python-dev git-core \
 	&& apt-get -y autoremove \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 ## Adjust permissions
 RUN setcap 'cap_net_bind_service=+ep' /usr/local/bin/ruby
