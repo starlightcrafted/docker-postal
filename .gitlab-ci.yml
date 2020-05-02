@@ -33,6 +33,7 @@ test-docker-ubuntu:
   stage: tests
   script:
     - cd ubuntu
+    - touch config/postal.yaml
     - docker load -i postal-ubuntu-container.tar
     - docker-compose up -d
     - for i in {1..20}; do [ $(docker inspect postal | jq '.[].State.Health.Status') == "healthy" ] && break || sleep 15; done
@@ -44,6 +45,7 @@ test-docker-alpine:
   stage: tests
   script:
     - cd alpine
+    - touch config/postal.yaml
     - docker load -i postal-alpine-container.tar
     - docker-compose up -d
     - for i in {1..20}; do [ $(docker inspect postal | jq '.[].State.Health.Status') == "healthy" ] && break || sleep 15; done
