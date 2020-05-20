@@ -1,16 +1,19 @@
 version: "3"
 services:
   postal:
-    image: catdeployed/postal:ubuntu
+    #image: catdeployed/postal:ubuntu
+    build: .
     container_name: postal
     command: run
+    tty: true
     ports:
       - 127.0.0.1:25:25
     depends_on:
       - "mysql"
       - "rabbitmq"
     volumes:
-      - ./config/postal.yml:/opt/postal/config/postal.yml
+#      - ./config/postal.yml:/opt/postal/config/postal.yml
+      - persistent_assets:/storage
       - static_assets:/opt/postal/public
       - postal_assets:/opt/postal/public/assets
       - ./src/templates/:/templates
@@ -58,6 +61,7 @@ services:
       - static_assets:/opt/postal/public:ro
       - postal_assets:/opt/postal/public/assets:ro
 volumes:
+  persistent_assets:
   static_assets:
   postal_assets:
   mysql_data:

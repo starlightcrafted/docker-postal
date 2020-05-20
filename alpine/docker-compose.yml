@@ -1,7 +1,8 @@
 version: "3"
 services:
   postal:
-    image: catdeployed/postal:alpine
+    #image: catdeployed/postal:alpine
+    build: .
     container_name: postal
     command: run
     ports:
@@ -10,7 +11,7 @@ services:
       - "mysql"
       - "rabbitmq"
     volumes:
-      - ./config/postal.yml:/opt/postal/config/postal.yml
+      - persistent_assets:/storage
       - static_assets:/opt/postal/public
       - postal_assets:/opt/postal/public/assets
       - ./src/templates/:/templates
@@ -61,3 +62,4 @@ volumes:
   static_assets:
   postal_assets:
   mysql_data:
+  persistent_assets:

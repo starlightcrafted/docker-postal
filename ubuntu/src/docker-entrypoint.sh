@@ -4,6 +4,11 @@
 rm -rf /opt/postal/tmp/pids/*
 rm -rf /tmp/postal
 
+## Check if existing config
+if [ -f /storage/postal.yml ]; then
+  cp /storage/postal.yml /opt/postal/config/postal.yml
+fi
+
 ## Generate config
 if [ ! -f /opt/postal/config/postal.yml ] || [[ $(cat /opt/postal/config/postal.yml | wc -l) < 2 ]]; then
   ## Build Jinja2 Template
@@ -15,18 +20,15 @@ if [ ! -f /opt/postal/config/postal.yml ] || [[ $(cat /opt/postal/config/postal.
   /opt/postal/bin/postal initialize-config
   ## Wait for MySQL and RabbitMQ to start up
   echo "== Waiting for MySQL and RabbitMQ to start up =="
-  dockerize -wait tcp://mysql:3306 -wait http://rabbitmq:5672/api/aliveness-test
+  dockerize -timeout 60m -wait tcp://mysql:3306 -wait tcp://rabbitmq:5672
   /opt/postal/bin/postal initialize
-  /opt/postal/bin/postal make-user <<-EOF
-$POSTAL_EMAIL
-$POSTAL_FNAME
-$POSTAL_LNAME
-$POSTAL_PASSWORD
-EOF
+  /create-user.sh
+  ## Copy over config to persistent storage
+  cp /opt/postal/config/postal.yml /storage/postal.yml
 else
   ## Wait for MySQL and RabbitMQ to start up
   echo "== Waiting for MySQL and RabbitMQ to start up =="
-  dockerize -wait tcp://mysql:3306 -wait http://rabbitmq:5672/api/aliveness-test
+  dockerize -timeout 60m -wait tcp://mysql:3306 -wait tcp://rabbitmq:5672
 fi
 ## Start Postal
 /opt/postal/bin/postal "$@"

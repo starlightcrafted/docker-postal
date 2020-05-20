@@ -5,7 +5,7 @@ ENV DOCKERIZE_VERSION v0.6.1
 RUN wget https://github.com/wrouesnel/p2cli/releases/download/r5/p2 -O /usr/local/bin/p2 \
         && chmod +x /usr/local/bin/p2
 
-RUN apk --no-cache add nodejs mariadb-client git bash libcap build-base mariadb-dev tzdata mariadb-connector-c openssl \
+RUN apk --no-cache add nodejs mariadb-client git bash libcap build-base mariadb-dev tzdata mariadb-connector-c openssl expect\
         && git clone https://github.com/atech/postal.git /opt/postal \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& gem install bundler \
@@ -28,6 +28,7 @@ RUN setcap 'cap_net_bind_service=+ep' /usr/local/bin/ruby
 
 ## Stick in required files
 ADD src/docker-entrypoint.sh /docker-entrypoint.sh
+ADD src/create-user.sh /create-user.sh
 ADD src/templates /templates
 
 ## Expose

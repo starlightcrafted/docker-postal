@@ -9,7 +9,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
         && apt-get install -y nodejs
 
 RUN apt-get -y update \
-	&& apt-get -y install --no-install-recommends nodejs mariadb-client git-core libcap2-bin wget \
+	&& apt-get -y install --no-install-recommends nodejs mariadb-client git-core libcap2-bin wget expect\
         && git clone https://github.com/atech/postal.git /opt/postal \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& gem install bundler \
@@ -32,6 +32,7 @@ RUN setcap 'cap_net_bind_service=+ep' /usr/local/bin/ruby
 
 ## Stick in required files
 ADD src/docker-entrypoint.sh /docker-entrypoint.sh
+ADD src/create-user.sh /create-user.sh
 ADD src/templates /templates
 
 ## Expose
