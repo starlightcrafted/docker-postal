@@ -1,4 +1,4 @@
-FROM ruby:2.6
+FROM ruby:2.7
 
 ENV DOCKERIZE_VERSION v0.6.1
 
@@ -11,6 +11,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
 RUN apt-get -y update \
 	&& apt-get -y install --no-install-recommends nodejs mariadb-client git-core libcap2-bin wget expect\
         && git clone https://github.com/atech/postal.git /opt/postal \
+        && sed -i 's/1.17.2/2.1.4/g' /opt/postal/Gemfile.lock \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& gem install bundler \
 	&& gem install procodile \

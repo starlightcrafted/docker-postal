@@ -1,4 +1,4 @@
-FROM ruby:2.6-alpine
+FROM ruby:2.7-alpine
 
 ENV DOCKERIZE_VERSION v0.6.1
 
@@ -7,6 +7,7 @@ RUN wget https://github.com/wrouesnel/p2cli/releases/download/r5/p2 -O /usr/loca
 
 RUN apk --no-cache add nodejs mariadb-client git bash libcap build-base mariadb-dev tzdata mariadb-connector-c openssl expect\
         && git clone https://github.com/atech/postal.git /opt/postal \
+        && sed -i 's/1.17.2/2.1.4/g' /opt/postal/Gemfile.lock \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& gem install bundler \
 	&& gem install procodile \
