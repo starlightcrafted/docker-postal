@@ -36,6 +36,23 @@ ADD src/templates /templates
 # NGINX (X-Accel-Redirect)
 RUN sed -i '/config.action_dispatch.x_sendfile_header/s/^# //g' /opt/postal/config/environments/production.rb
 
+# Protection against identification by automatic bots on vulnerability
+ENV REBRAND_MAILER=MySendClient
+RUN if [ ! -z "${REBRAND_MAILER}" ]; then \
+           sed -i -E "s@(by )Postal@\1${REBRAND_MAILER}@g" /opt/postal/app/models/*message*.rb; \
+           sed -i -E "s@(X(\\\)?-)Postal@\1${REBRAND_MAILER}@g" /opt/postal/lib/postal/message_db/message.rb; \
+           sed -i -E "s@(ESMTP )Postal@\1${REBRAND_MAILER}@g" /opt/postal/lib/postal/smtp_server/server.rb; \
+           sed -i -E "s@(ESMTP )Postal@\1${REBRAND_MAILER}@g" /opt/postal/lib/postal/smtp_server/client.rb; \
+           sed -i "s@Welcome to Postal@Welcome to ${REBRAND_MAILER}@g" /opt/postal/app/mailers/app_mailer.rb; \
+           sed -i "s@Welcome to Postal@Welcome to ${REBRAND_MAILER}@g" /opt/postal/lib/postal/smtp_server/server.rb; \
+           sed -i "s@Welcome to Postal@Welcome to ${REBRAND_MAILER}@g" /opt/postal/app/views/organizations/index.html.haml; \
+           sed -i "s@Welcome to Postal@Welcome to ${REBRAND_MAILER}@g" /opt/postal/app/views/user/join.html.haml; \
+           sed -i "s@Welcome to Postal@Welcome to ${REBRAND_MAILER}@g" /opt/postal/app/views/sessions/new.html.haml; \
+           sed -i "s@\[\"Postal\"\]@\[\"${REBRAND_MAILER}\"\]@g" /opt/postal/app/controllers/application_controller.rb; \
+           # bash -c "sed -i \"s@_postal_session@_${REBRAND_MAILER}_session@g\" /opt/postal/config/initializers/session_store.rb"; \
+           sed -i "s@_postal_session@_$(echo -n ${REBRAND_MAILER}|tr '[:upper:]' '[:lower:]')_session@g" /opt/postal/config/initializers/session_store.rb; \
+         fi
+
 ## Expose
 EXPOSE 5000
 
