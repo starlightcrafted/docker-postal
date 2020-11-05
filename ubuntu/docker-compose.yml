@@ -35,6 +35,8 @@ services:
   mysql:
     image: mariadb:10
     container_name: postal_mysql
+    command: |
+      mysqld --thread-handling=pool-of-threads
     volumes:
       - mysql_data:/var/lib/mysql
     environment:
