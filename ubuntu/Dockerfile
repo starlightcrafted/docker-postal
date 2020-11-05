@@ -1,4 +1,5 @@
 FROM ruby:2.7
+#FROM ruby:3.0-rc # && sed -i 's@minitest (5.14.1)@minitest (5.14.2)@g' /opt/postal/Gemfile.lock
 
 ENV DOCKERIZE_VERSION v0.6.1
 
@@ -35,6 +36,9 @@ RUN setcap 'cap_net_bind_service=+ep' /usr/local/bin/ruby
 ADD src/docker-entrypoint.sh /docker-entrypoint.sh
 ADD src/create-user.sh /create-user.sh
 ADD src/templates /templates
+
+# NGINX (X-Accel-Redirect)
+RUN sed -i '/config.action_dispatch.x_sendfile_header/s/^# //g' /opt/postal/config/environments/production.rb
 
 ## Expose
 EXPOSE 5000
