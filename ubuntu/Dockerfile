@@ -10,7 +10,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
         && apt-get install -y nodejs
 
 RUN apt-get -y update \
-	&& apt-get -y install --no-install-recommends nodejs mariadb-client git-core libcap2-bin wget expect\
+	&& apt-get -y install --no-install-recommends nodejs mariadb-client git-core libcap2-bin wget expect libjemalloc2 \
         && git clone --depth=1 https://github.com/atech/postal.git /opt/postal \
         && sed -i 's/1.17.2/2.1.4/g' /opt/postal/Gemfile.lock \
 	&& rm -rf /var/lib/apt/lists/* \
@@ -61,5 +61,7 @@ RUN if [ ! -z "${REBRAND_MAILER}" ]; then \
 EXPOSE 5000
 
 ## Startup
-# ENV RUBYOPT --jit
+ENV RUBYOPT --jit
+# ENV MALLOC_ARENA_MAX 2
+ENV LD_PRELOAD /usr/lib/x86_64-linux-gnu/libjemalloc.so.2
 ENTRYPOINT ["/bin/bash", "-c", "/docker-entrypoint.sh ${*}", "--"]
