@@ -1,5 +1,7 @@
 FROM ruby:2.7
 #FROM ruby:3.0-rc # && sed -i 's@minitest (5.14.1)@minitest (5.14.2)@g' /opt/postal/Gemfile.lock
+#FROM flavorjones/truffleruby:stable
+#FROM jruby:9.2
 
 ENV DOCKERIZE_VERSION v0.6.1
 
