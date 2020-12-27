@@ -5,8 +5,8 @@ rm -rf /opt/postal/tmp/pids/*
 rm -rf /tmp/postal
 
 ## Check if existing config
-if [ -f /storage/postal.yml ]; then
-  cp /storage/postal.yml /opt/postal/config/postal.yml
+if [ $(ls /storage | wc -l) > 0 ]; then
+  cp /storage/* /opt/postal/config/*
 fi
 
 ## Generate config
@@ -25,6 +25,10 @@ if [ ! -f /opt/postal/config/postal.yml ] || [[ $(cat /opt/postal/config/postal.
   /create-user.sh
   ## Copy over config to persistent storage
   cp /opt/postal/config/postal.yml /storage/postal.yml
+  cp /opt/postal/config/fast_server.cert /storage/fast_server.cert
+  cp /opt/postal/config/fast_server.key /storage/fast_server.key
+  cp /opt/postal/config/lets_encrypt.pem /storage/lets_encrypt.pem
+  cp /opt/postal/config/signing.key /storage/signing.key
 else
   ## Wait for MySQL and RabbitMQ to start up
   echo "== Waiting for MySQL and RabbitMQ to start up =="

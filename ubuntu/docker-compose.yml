@@ -12,7 +12,6 @@ services:
       - "mysql"
       - "rabbitmq"
     volumes:
-#      - ./config/postal.yml:/opt/postal/config/postal.yml
       - persistent_assets:/storage
       - static_assets:/opt/postal/public
       - postal_assets:/opt/postal/public/assets
