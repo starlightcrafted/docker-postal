@@ -1,0 +1,15 @@
+version: v1.0
+name: Pipeline 2
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Test (Alpine)
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands:
+            - cd alpine
+            - docker-compose up -d
+            - 'for i in {1..20}; do [ $(docker inspect postal | jq ''.[].State.Health.Status'') == "healthy" ] && break || sleep 15; done'
