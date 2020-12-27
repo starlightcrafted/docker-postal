@@ -1,8 +1,7 @@
 version: "3"
 services:
   postal:
-    #image: catdeployed/postal:alpine
-    build: .
+    image: catdeployed/postal:alpine
     container_name: postal
     command: run
     ports:

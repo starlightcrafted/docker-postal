@@ -1,8 +1,7 @@
 version: "3"
 services:
   postal:
-    #image: catdeployed/postal:ubuntu
-    build: .
+    image: catdeployed/postal:ubuntu
     container_name: postal
     command: run
     tty: true

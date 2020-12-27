@@ -5,19 +5,16 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Test (Alpine)
+  - name: Test
     task:
       jobs:
-        - name: 'Job #1'
+        - name: 'Alpine Test'
           commands:
             - checkout
             - cd alpine
             - docker-compose up -d
             - 'for i in {1..20}; do [ $(docker inspect postal | jq ''.[].State.Health.Status'') == "healthy" ] && break || sleep 15; done'
-  - name: Test (Ubuntu)
-    task:
-      jobs:
-        - name: 'Job #1'
+        - name: 'Ubuntu Test'
           commands:
             - checkout
             - cd ubuntu

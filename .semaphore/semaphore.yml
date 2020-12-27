@@ -5,18 +5,15 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Build (Alpine)
+  - name: Build
     task:
       jobs:
-        - name: 'Job #1'
+        - name: 'Alpine'
           commands:
             - checkout
             - cd alpine
             - 'docker build --network=host -t catdeployed/postal:alpine .'
-  - name: Build (Ubuntu)
-    task:
-      jobs:
-        - name: 'Job #1'
+        - name: 'Ubuntu'
           commands:
             - checkout
             - cd ubuntu
