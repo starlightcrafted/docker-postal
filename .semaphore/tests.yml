@@ -15,7 +15,7 @@ blocks:
             - artifact pull workflow postal-alpine-container.tar
             - docker load -i postal-alpine-container.tar
             - docker-compose up -d
-            - for i in {1..20}; do if [[ $(docker inspect postal | jq '.[].State.Health.Status') == "healthy" ]]; then break; fi; sleep 15; done;
+            - for i in {1..20}; do if [[ $(docker inspect postal | jq '.[].State.Health.Status') == "healthy" ]]; then break; else sleep 15; fi; done;
             - artifact yank workflow postal-alpine-container.tar
         - name: 'Ubuntu Test'
           commands:
@@ -24,5 +24,5 @@ blocks:
             - artifact pull workflow postal-ubuntu-container.tar
             - docker load -i postal-ubuntu-container.tar
             - docker-compose up -d
-            - for i in {1..20}; do if [[ $(docker inspect postal | jq '.[].State.Health.Status') == "healthy" ]]; then break; fi; sleep 15; done;
+            - for i in {1..20}; do if [[ $(docker inspect postal | jq '.[].State.Health.Status') == "healthy" ]]; then break; else sleep 15; fi; done;
             - artifact yank workflow postal-ubuntu-container.tar
