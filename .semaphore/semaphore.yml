@@ -14,14 +14,14 @@ blocks:
             - cd alpine
             - 'docker build --network=host -t catdeployed/postal:alpine .'
             - docker save -o postal-alpine-container.tar catdeployed/postal:alpine
-            - artifact push job postal-alpine-container.tar --expire-in 1d
+            - artifact push workflow postal-alpine-container.tar --expire-in 1d
         - name: 'Ubuntu'
           commands:
             - checkout
             - cd ubuntu
             - 'docker build --network=host -t catdeployed/postal:ubuntu .'
             - docker save -o postal-ubuntu-container.tar catdeployed/postal:ubuntu
-            - artifact push job postal-ubuntu-container.tar --expire-in 1d
+            - artifact push workflow postal-ubuntu-container.tar --expire-in 1d
 promotions:
   - name: Default Promotion
     pipeline_file: tests.yml

@@ -12,17 +12,17 @@ blocks:
           commands:
             - checkout
             - cd alpine
-            - artifact pull job postal-alpine-container.tar
+            - artifact pull workflow postal-alpine-container.tar
             - docker load -i postal-alpine-container.tar
             - docker-compose up -d
             - 'for i in {1..20}; do [ $(docker inspect postal | jq ''.[].State.Health.Status'') == "healthy" ] && break || sleep 15; done'
-            - artifact yank job job postal-alpine-container.tar
+            - artifact yank workflow postal-alpine-container.tar
         - name: 'Ubuntu Test'
           commands:
             - checkout
             - cd ubuntu
-            - artifact pull job postal-ubuntu-container.tar
+            - artifact pull workflow postal-ubuntu-container.tar
             - docker load -i postal-ubuntu-container.tar
             - docker-compose up -d
             - 'for i in {1..20}; do [ $(docker inspect postal | jq ''.[].State.Health.Status'') == "healthy" ] && break || sleep 15; done'
-            - artifact yank job job postal-ubuntu-container.tar
+            - artifact yank workflow postal-ubuntu-container.tar
