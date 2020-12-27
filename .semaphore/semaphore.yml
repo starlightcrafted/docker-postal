@@ -24,3 +24,5 @@ blocks:
 promotions:
   - name: Default Promotion
     pipeline_file: tests.yml
+    auto_promote:
+      when: result = 'passed'
