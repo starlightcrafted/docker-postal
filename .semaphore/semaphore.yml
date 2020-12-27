@@ -14,10 +14,10 @@ blocks:
             - cd alpine
             - 'docker build --network=host -t catdeployed/postal:alpine .'
     skip:
-      when: branch != master
+      when: branch != 'master'
   - name: Build (Ubuntu)
     skip:
-      when: branch != master
+      when: branch != 'master'
     task:
       jobs:
         - name: 'Job #1'
