@@ -1,0 +1,32 @@
+version: v1.0
+name: Initial Pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Build (Alpine)
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands:
+            - checkout
+            - cd alpine
+            - 'docker build --network=host -t catdeployed/postal:alpine .'
+    skip:
+      when: branch != 'master'
+  - name: Build (Ubuntu)
+    skip:
+      when: branch != 'master'
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands:
+            - checkout
+            - cd alpine
+            - 'docker build --network=host -t catdeployed/postal:alpine .'
+promotions:
+  - name: Default Promotion
+    pipeline_file: pipeline_2.yml
+    auto_promote:
+      when: branch = 'master' AND result = 'passed'
