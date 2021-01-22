@@ -8,4 +8,5 @@ expect "Last Name"
 send "$env(POSTAL_LNAME)\n"
 expect "Password"
 send "$env(POSTAL_PASSWORD)\n"
+send "\n"
 interact
