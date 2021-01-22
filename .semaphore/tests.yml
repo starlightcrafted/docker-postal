@@ -26,3 +26,8 @@ blocks:
             - docker-compose up -d
             - for i in {1..20}; do if [[ $(docker inspect postal | jq -r '.[].State.Health.Status') == "healthy" ]]; then break; elif [[ $i -eq 20 ]]; then exit 1; else sleep 15; fi; done;
             - artifact yank workflow postal-ubuntu-container.tar
+promotions:
+  - name: Default Promotion
+    pipeline_file: upload.yml
+    auto_promote:
+      when: result = 'passed'
