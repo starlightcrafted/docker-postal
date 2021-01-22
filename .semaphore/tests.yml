@@ -1,5 +1,5 @@
 version: v1.0
-name: Pipeline 2
+name: Docker Image Testing
 agent:
   machine:
     type: e1-standard-2
@@ -16,7 +16,6 @@ blocks:
             - docker load -i postal-alpine-container.tar
             - docker-compose up -d
             - for i in {1..20}; do if [[ $(docker inspect postal | jq -r '.[].State.Health.Status') == "healthy" ]]; then break; elif [[ $i -eq 20 ]]; then exit 1; else sleep 15; fi; done;
-            - artifact yank workflow postal-alpine-container.tar
         - name: 'Ubuntu Test'
           commands:
             - checkout
@@ -25,7 +24,6 @@ blocks:
             - docker load -i postal-ubuntu-container.tar
             - docker-compose up -d
             - for i in {1..20}; do if [[ $(docker inspect postal | jq -r '.[].State.Health.Status') == "healthy" ]]; then break; elif [[ $i -eq 20 ]]; then exit 1; else sleep 15; fi; done;
-            - artifact yank workflow postal-ubuntu-container.tar
 promotions:
   - name: Default Promotion
     pipeline_file: upload.yml

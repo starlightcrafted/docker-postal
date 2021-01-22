@@ -1,5 +1,5 @@
 version: v1.0
-name: Initial Pipeline
+name: Docker Build 
 agent:
   machine:
     type: e1-standard-2

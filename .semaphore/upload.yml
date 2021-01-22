@@ -1,5 +1,5 @@
 version: v1.0
-name: Pipeline 3
+name: Docker Image Upload
 agent:
   machine:
     type: e1-standard-2
@@ -19,6 +19,7 @@ blocks:
             - docker tag catdeployed/postal:alpine docker.pkg.github.com/CatDeployed/docker-postal/postal:latest
             - docker push docker.pkg.github.com/CatDeployed/docker-postal/postal:alpine
             - docker push docker.pkg.github.com/CatDeployed/docker-postal/postal:latest
+            - artifact yank workflow postal-alpine-container.tar
         - name: 'Ubuntu Upload'
           commands:
             - checkout
@@ -28,3 +29,4 @@ blocks:
             - echo "$DOCKER_GITHUB_PASS" | docker login docker.pkg.github.com -u "$DOCKER_GITHUB_USER" --password-stdin
             - docker tag catdeployed/postal:ubuntu docker.pkg.github.com/CatDeployed/docker-postal/postal:ubuntu
             - docker push docker.pkg.github.com/CatDeployed/docker-postal/postal:ubuntu
+            - artifact yank workflow postal-ubuntu-container.tar
