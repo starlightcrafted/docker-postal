@@ -18,7 +18,7 @@ blocks:
             - artifact pull workflow postal-alpine-container.tar
             - docker load -i postal-alpine-container.tar
             - echo "$DOCKER_GITHUB_PASS" | docker login docker.pkg.github.com --username "$DOCKER_GITHUB_USER" --password-stdin
-            - docker.pkg.github.com/catdeployed/docker-postal/postal:alpine docker.pkg.github.com/catdeployed/docker-postal/postal:latest
+            - docker tag docker.pkg.github.com/catdeployed/docker-postal/postal:alpine docker.pkg.github.com/catdeployed/docker-postal/postal:latest
             - docker push docker.pkg.github.com/catdeployed/docker-postal/postal:alpine
             - docker push docker.pkg.github.com/catdeployed/docker-postal/postal:latest
             - artifact yank workflow postal-alpine-container.tar
