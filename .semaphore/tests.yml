@@ -22,6 +22,7 @@ blocks:
             - cd ubuntu
             - artifact pull workflow postal-ubuntu-container.tar
             - docker load -i postal-ubuntu-container.tar
+            - cp tests/docker-compose.yml docker-compose.yml
             - docker-compose up -d
             - for i in {1..20}; do if [[ $(docker inspect postal | jq -r '.[].State.Health.Status') == "healthy" ]]; then break; elif [[ $i -eq 20 ]]; then exit 1; else sleep 15; fi; done;
 promotions:
