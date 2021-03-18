@@ -45,10 +45,19 @@ Port mappings may change (as they have in the past). If SMTP/HTTP(s) is not work
 ### Anti-Spam / Antivirus
 The initial design for the container was to be simple, minimal, and customizable, so Spamassassin and ClamAV are not included by default. Feel free to fork and add to the Dockerfile (though you must set docker-compose.yml to build from Dockerfile and not pull an image), or add them by linking additional containers.
 
+### Managed Files
+These files are automatically managed by the container. If you wish to adjust them, add them to the `persistent_assets` mount
+- config/postal.yml
+- config/fast_server.cert
+- config/fast_server.key
+- config/lets_encrypt.pem
+- config/signing.key
+
 ### Updates
 - v3.1.0
   * Fixed username/password injection problem during user creation by adding sleep inbetween entries
-  * Missed mount 
+  * Updated mountpoint to use symbolic links instead of copying files to allow for app to update assets as needed
+  * Fixed missing files that should be copied inbetween runs
 - v3.0.0
   * Move to Gitlab with automated testing
   * Add user creation system for more reliability

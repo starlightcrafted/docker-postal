@@ -23,7 +23,7 @@ blocks:
             - docker save -o postal-ubuntu-container.tar docker.pkg.github.com/catdeployed/docker-postal/postal:ubuntu
             - artifact push workflow postal-ubuntu-container.tar --expire-in 1d
 promotions:
-  - name: Test Stage
+  - name: Docker Image Testing
     pipeline_file: tests.yml
     auto_promote:
       when: result = 'passed'
