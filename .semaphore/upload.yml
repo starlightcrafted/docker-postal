@@ -7,6 +7,7 @@ agent:
 global_job_config:
   secrets:
     - name: DOCKER_GITHUB
+    - name: DOCKER_HUB
 blocks:
   - name: Upload
     task:
@@ -21,6 +22,11 @@ blocks:
             - docker tag docker.pkg.github.com/catdeployed/docker-postal/postal:alpine docker.pkg.github.com/catdeployed/docker-postal/postal:latest
             - docker push docker.pkg.github.com/catdeployed/docker-postal/postal:alpine
             - docker push docker.pkg.github.com/catdeployed/docker-postal/postal:latest
+            - echo "$DOCKER_HUB_PASS" | docker login --username "$DOCKER_HUB_USER" --password-stdin
+            - docker tag docker.pkg.github.com/catdeployed/docker-postal/postal:alpine catdeployed/postal:alpine
+            - docker tag docker.pkg.github.com/catdeployed/docker-postal/postal:alpine catdeployed/postal:latest
+            - docker push catdeployed/postal:alpine
+            - docker push catdeployed/postal:latest
             - artifact yank workflow postal-alpine-container.tar
         - name: 'Ubuntu Upload'
           commands:
@@ -30,4 +36,7 @@ blocks:
             - docker load -i postal-ubuntu-container.tar
             - echo "$DOCKER_GITHUB_PASS" | docker login docker.pkg.github.com --username "$DOCKER_GITHUB_USER" --password-stdin
             - docker push docker.pkg.github.com/catdeployed/docker-postal/postal:ubuntu
+            - echo "$DOCKER_HUB_PASS" | docker login --username "$DOCKER_HUB_USER" --password-stdin
+            - docker tag docker.pkg.github.com/catdeployed/docker-postal/postal:ubuntu catdeployed/postal:ubuntu
+            - docker push catdeployed/postal:ubuntu
             - artifact yank workflow postal-ubuntu-container.tar
