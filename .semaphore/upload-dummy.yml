@@ -1,0 +1,20 @@
+version: v1.0
+name: Docker Image Upload
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+global_job_config:
+  secrets:
+    - name: DOCKER_GITHUB
+    - name: DOCKER_HUB
+blocks:
+  - name: Upload
+    task:
+      jobs:
+        - name: 'Alpine Upload'
+          commands:
+            - artifact yank workflow postal-alpine-container.tar
+        - name: 'Ubuntu Upload'
+          commands:
+            - artifact yank workflow postal-ubuntu-container.tar
