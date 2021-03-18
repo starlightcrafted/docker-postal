@@ -1,5 +1,5 @@
 # docker-postal
-![](https://img.shields.io/badge/image-catdeployed%2Fpostal-blue?style=flat-square&logo=Docker) ![](https://gitlab.catdeployed.net/CatDeployed/docker-postal/badges/master/pipeline.svg?style=flat-square) ![](https://img.shields.io/docker/pulls/catdeployed/postal?style=flat-square)
+[![Build Status](https://iloveyatoo.semaphoreci.com/badges/docker-postal/branches/master.svg)](https://iloveyatoo.semaphoreci.com/projects/docker-postal) ![](https://img.shields.io/badge/image-catdeployed%2Fpostal-blue?style=flat-square&logo=Docker) ![](https://img.shields.io/docker/pulls/catdeployed/postal?style=flat-square)
 
 This project runs daily docker builds for postalhq/postal
 
