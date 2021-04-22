@@ -1,7 +1,7 @@
 version: "3"
 services:
   postal:
-    image: docker.pkg.github.com/catdeployed/docker-postal/postal:ubuntu
+    image: catdeployed/postal:ubuntu
     container_name: postal
     command: run
     tty: true
