@@ -5,12 +5,12 @@ This project runs daily docker builds for postalhq/postal
 
 
 #### Alpine Linux Container (Default)
-![](https://img.shields.io/badge/image-catdeployed%2Fpostal:alpine-blue?style=flat-square&logo=Docker) ![](https://img.shields.io/docker/image-size/catdeployed/postal/alpine?style=flat-square) ![](https://img.shields.io/microbadger/layers/catdeployed/postal/alpine?style=flat-square)
+![](https://img.shields.io/badge/image-catdeployed%2Fpostal:alpine-blue?style=flat-square&logo=Docker) ![](https://img.shields.io/docker/image-size/catdeployed/postal/alpine?style=flat-square)
 
 For this container, use the 'alpine' folder.
 
 #### Ubuntu Linux Container
-![](https://img.shields.io/badge/image-catdeployed%2Fpostal:ubuntu-blue?style=flat-square&logo=Docker) ![](https://img.shields.io/docker/image-size/catdeployed/postal/ubuntu?style=flat-square) ![](https://img.shields.io/microbadger/layers/catdeployed/postal/ubuntu?style=flat-square)
+![](https://img.shields.io/badge/image-catdeployed%2Fpostal:ubuntu-blue?style=flat-square&logo=Docker) ![](https://img.shields.io/docker/image-size/catdeployed/postal/ubuntu?style=flat-square)
 
 For this container, use the 'ubuntu' folder.
 
