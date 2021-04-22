@@ -55,7 +55,7 @@ These files are automatically managed by the container. If you wish to adjust th
 
 ### Updates
 - v3.1.0
-  * Fixed username/password injection problem during user creation by adding sleep inbetween entries
+  * Fixed username/password injection problem during user creation by adding sleep in between entries
   * Updated mountpoint to use symbolic links instead of copying files to allow for app to update assets as needed
   * Fixed missing files that should be copied inbetween runs
 - v3.0.0
