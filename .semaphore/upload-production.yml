@@ -17,7 +17,7 @@ blocks:
             - cd alpine
             - artifact pull workflow postal-alpine-container.tar
             - docker load -i postal-alpine-container.tar
-            - echo "$DOCKER_HUB_PASS" | docker login --username "$DOCKER_HUB_USER" --password-stdin
+            - echo "$DOCKER_HUB_PASS_CATDEPLOYED" | docker login --username "$DOCKER_HUB_USER_CATDEPLOYED" --password-stdin
             - docker tag catdeployed/postal:alpine catdeployed/postal:latest
             - docker push catdeployed/postal:alpine
             - docker push catdeployed/postal:latest
@@ -28,6 +28,6 @@ blocks:
             - cd ubuntu
             - artifact pull workflow postal-ubuntu-container.tar
             - docker load -i postal-ubuntu-container.tar
-            - echo "$DOCKER_HUB_PASS" | docker login --username "$DOCKER_HUB_USER" --password-stdin
+            - echo "$DOCKER_HUB_PASS_CATDEPLOYED" | docker login --username "$DOCKER_HUB_USER_CATDEPLOYED" --password-stdin
             - docker push catdeployed/postal:ubuntu
             - artifact yank workflow postal-ubuntu-container.tar
