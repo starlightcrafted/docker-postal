@@ -12,7 +12,7 @@ blocks:
   - name: Upload
     task:
       jobs:
-        - name: 'Alpine Upload (CatDeployed)'
+        - name: 'Alpine Upload'
           commands:
             - checkout
             - cd alpine
@@ -28,7 +28,7 @@ blocks:
             - docker push iloveyatoo/postal:alpine
             - docker push iloveyatoo/postal:latest
             - artifact yank workflow postal-alpine-container.tar
-        - name: 'Ubuntu Upload (CatDeployed)'
+        - name: 'Ubuntu Upload'
           commands:
             - checkout
             - cd ubuntu
