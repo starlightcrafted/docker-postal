@@ -7,11 +7,12 @@ agent:
 global_job_config:
   secrets:
     - name: DOCKER_HUB_CATDEPLOYED
+    - name: DOCKER_HUB_ILOVEYATOO
 blocks:
   - name: Upload
     task:
       jobs:
-        - name: 'Alpine Upload'
+        - name: 'Alpine Upload (CatDeployed)'
           commands:
             - checkout
             - cd alpine
@@ -21,8 +22,13 @@ blocks:
             - docker tag catdeployed/postal:alpine catdeployed/postal:latest
             - docker push catdeployed/postal:alpine
             - docker push catdeployed/postal:latest
+            - echo "$DOCKER_HUB_PASS_ILOVEYATOO" | docker login --username "$DOCKER_HUB_USER_ILOVEYATOO" --password-stdin
+            - docker tag catdeployed/postal:alpine iloveyatoo/postal:latest
+            - docker tag catdeployed/postal:alpine iloveyatoo/postal:alpine
+            - docker push iloveyatoo/postal:alpine
+            - docker push iloveyatoo/postal:latest
             - artifact yank workflow postal-alpine-container.tar
-        - name: 'Ubuntu Upload'
+        - name: 'Ubuntu Upload (CatDeployed)'
           commands:
             - checkout
             - cd ubuntu
