@@ -36,4 +36,7 @@ blocks:
             - docker load -i postal-ubuntu-container.tar
             - echo "$DOCKER_HUB_PASS_CATDEPLOYED" | docker login --username "$DOCKER_HUB_USER_CATDEPLOYED" --password-stdin
             - docker push catdeployed/postal:ubuntu
+            - echo "$DOCKER_HUB_PASS_ILOVEYATOO" | docker login --username "$DOCKER_HUB_USER_ILOVEYATOO" --password-stdin
+            - docker tag catdeployed/postal:ubuntu iloveyatoo/postal:ubuntu
+            - docker push iloveyatoo/postal:ubuntu
             - artifact yank workflow postal-ubuntu-container.tar
