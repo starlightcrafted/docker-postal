@@ -1,6 +1,7 @@
 FROM ruby:2.7-alpine
 
 ENV DOCKERIZE_VERSION v0.6.1
+ENV BUNDLER_VERSION 1.17.2
 
 RUN wget https://github.com/wrouesnel/p2cli/releases/download/r5/p2 -O /usr/local/bin/p2 \
         && chmod +x /usr/local/bin/p2
@@ -15,6 +16,8 @@ RUN apk --no-cache upgrade musl \
 	&& addgroup -S postal \
 	&& adduser -S -G postal -h /opt/postal -s /bin/bash postal \
 	&& chown -R postal:postal /opt/postal/ \
+	&& cd /opt/postal \
+	&& gem install bundler:$BUNDLER_VERSION \
 	&& /opt/postal/bin/postal bundle /opt/postal/vendor/bundle \
 	&& apk del git mariadb-dev \
 	&& rm -rf /var/cache/apk/*
