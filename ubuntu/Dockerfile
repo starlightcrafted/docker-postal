@@ -1,6 +1,7 @@
-FROM ruby:2.6
+FROM ruby:2.7
 
 ENV DOCKERIZE_VERSION v0.6.1
+ENV BUNDLER_VERSION 1.17.2
 
 RUN curl -L https://github.com/wrouesnel/p2cli/releases/download/r5/p2 -o /usr/local/bin/p2 \
         && chmod +x /usr/local/bin/p2
@@ -17,6 +18,8 @@ RUN apt-get -y update \
 	&& gem install tzinfo-data \
 	&& useradd -r -d /opt/postal -s /bin/bash postal \
 	&& chown -R postal:postal /opt/postal/ \
+	&& cd /opt/postal \
+	&& gem install bundler:$BUNDLER_VERSION \
 	&& /opt/postal/bin/postal bundle /opt/postal/vendor/bundle \
 	&& apt-get -y purge python-dev git-core \
 	&& apt-get -y autoremove \
