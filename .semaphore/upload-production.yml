@@ -8,6 +8,7 @@ global_job_config:
   secrets:
     - name: DOCKER_HUB_CATDEPLOYED
     - name: DOCKER_HUB_ILOVEYATOO
+    - name: QUAY_ILOVEYATOO
 blocks:
   - name: Upload
     task:
