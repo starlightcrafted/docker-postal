@@ -27,6 +27,11 @@ blocks:
             - docker tag catdeployed/postal:alpine iloveyatoo/postal:alpine
             - docker push iloveyatoo/postal:alpine
             - docker push iloveyatoo/postal:latest
+            - echo "QUAY_PASS_ILOVEYATOO" | docker login --username "$DOCKER_HUB_USER_ILOVEYATOO" --password-stdin quay.io
+            - docker tag catdeployed/postal:alpine quay.io/iloveyatoo/postal:alpine
+            - docker tag catdeployed/postal:alpine quay.io/iloveyatoo/postal:latest
+            - docker push quay.io/iloveyatoo/postal:alpine
+            - docker push quay.io/iloveyatoo/postal:latest
             - artifact yank workflow postal-alpine-container.tar
         - name: 'Ubuntu Upload'
           commands:
