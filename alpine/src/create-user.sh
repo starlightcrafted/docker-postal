@@ -7,5 +7,7 @@ send "$env(POSTAL_FNAME)\n"
 expect "Last Name"
 send "$env(POSTAL_LNAME)\n"
 expect "Password"
+sleep 5
 send "$env(POSTAL_PASSWORD)\n"
+send "\r"
 interact
