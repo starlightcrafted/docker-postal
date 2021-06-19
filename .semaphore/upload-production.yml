@@ -27,7 +27,7 @@ blocks:
             - docker tag catdeployed/postal:alpine iloveyatoo/postal:alpine
             - docker push iloveyatoo/postal:alpine
             - docker push iloveyatoo/postal:latest
-            - echo "QUAY_PASS_ILOVEYATOO" | docker login --username "$QUAY_USER_ILOVEYATOO" --password-stdin quay.io
+            - echo "$QUAY_PASS_ILOVEYATOO" | docker login --username "$QUAY_USER_ILOVEYATOO" --password-stdin quay.io
             - docker tag catdeployed/postal:alpine quay.io/iloveyatoo/postal:alpine
             - docker tag catdeployed/postal:alpine quay.io/iloveyatoo/postal:latest
             - docker push quay.io/iloveyatoo/postal:alpine
@@ -44,7 +44,7 @@ blocks:
             - echo "$DOCKER_HUB_PASS_ILOVEYATOO" | docker login --username "$DOCKER_HUB_USER_ILOVEYATOO" --password-stdin
             - docker tag catdeployed/postal:ubuntu iloveyatoo/postal:ubuntu
             - docker push iloveyatoo/postal:ubuntu
-            - echo "QUAY_PASS_ILOVEYATOO" | docker login --username "$QUAY_USER_ILOVEYATOO" --password-stdin quay.io
+            - echo "$QUAY_PASS_ILOVEYATOO" | docker login --username "$QUAY_USER_ILOVEYATOO" --password-stdin quay.io
             - docker tag catdeployed/postal:ubuntu quay.io/iloveyatoo/postal:ubuntu
             - docker push quay.io/iloveyatoo/postal:ubuntu
             - artifact yank workflow postal-ubuntu-container.tar
