@@ -3,7 +3,7 @@
 
 This project runs daily docker builds for postalhq/postal
 
-**Note that builds have recently been moved to a new account and docker-compose.yml files have been updated accordingly**
+**Note that builds have recently been moved to a new account and docker-compose.yml files have been updated accordingly. Please check the updates, especially if you are on the old `ubuntu` tag.**
 
 #### Alpine Linux Container (Default)
 ![](https://img.shields.io/badge/image-quay.io%2Filoveyatoo%2Fpostal:alpine-blue?style=flat-square&logo=Docker) ![](https://img.shields.io/badge/image-docker.io%2Filoveyatoo%2Fpostal:alpine-blue?style=flat-square&logo=Docker) ![](https://img.shields.io/docker/image-size/iloveyatoo/postal/alpine?style=flat-square)
