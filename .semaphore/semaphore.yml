@@ -12,14 +12,14 @@ blocks:
           commands:
             - checkout
             - cd alpine
-            - docker build --network=host -t catdeployed/postal:alpine .
+            - docker build --network=host -t quay.io/iloveyatoo/postal:alpine .
             - docker save -o postal-alpine-container.tar catdeployed/postal:alpine
             - artifact push workflow postal-alpine-container.tar --expire-in 1d
         - name: 'Debian'
           commands:
             - checkout
             - cd debian
-            - docker build --network=host -t catdeployed/postal:debian .
+            - docker build --network=host -t quay.io/iloveyatoo/postal:debian .
             - docker save -o postal-debian-container.tar catdeployed/postal:debian
             - artifact push workflow postal-debian-container.tar --expire-in 1d
 promotions:
