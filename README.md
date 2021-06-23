@@ -3,7 +3,7 @@
 
 This project runs daily docker builds for postalhq/postal
 
-Note that builds have recently been moved to Quay.io.
+**Note that builds have recently been moved to Quay.io and docker-compose.yml files have been updated accordingly**
 
 
 #### Alpine Linux Container (Default)
