@@ -1,5 +1,5 @@
 # docker-postal
-[![Build Status](https://iloveyatoo.semaphoreci.com/badges/docker-postal/branches/master.svg)](https://iloveyatoo.semaphoreci.com/projects/docker-postal) ![](https://img.shields.io/badge/image-quay.io%2Filoveyatoo%2Fpostal-blue?style=flat-square&logo=Docker)
+[![Build Status](https://iloveyatoo.semaphoreci.com/badges/docker-postal/branches/master.svg)](https://iloveyatoo.semaphoreci.com/projects/docker-postal) [![](https://img.shields.io/badge/image-quay.io%2Filoveyatoo%2Fpostal-blue?style=flat-square&logo=Docker)](https://quay.io/repository/iloveyatoo/postal?tab=tags)
 
 This project runs daily docker builds for postalhq/postal
 
