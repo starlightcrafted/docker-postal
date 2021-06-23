@@ -20,17 +20,17 @@ blocks:
             - artifact pull workflow postal-alpine-container.tar
             - docker load -i postal-alpine-container.tar
             - echo "$DOCKER_HUB_PASS_CATDEPLOYED" | docker login --username "$DOCKER_HUB_USER_CATDEPLOYED" --password-stdin
-            - docker tag catdeployed/postal:alpine catdeployed/postal:latest
+            - docker tag quay.io/iloveyatoo/postal:alpine catdeployed/postal:latest
+            - docker tag quay.io/iloveyatoo/postal:alpine catdeployed/postal:alpine
             - docker push catdeployed/postal:alpine
             - docker push catdeployed/postal:latest
             - echo "$DOCKER_HUB_PASS_ILOVEYATOO" | docker login --username "$DOCKER_HUB_USER_ILOVEYATOO" --password-stdin
-            - docker tag catdeployed/postal:alpine iloveyatoo/postal:latest
-            - docker tag catdeployed/postal:alpine iloveyatoo/postal:alpine
+            - docker tag quay.io/iloveyatoo/postal:alpine iloveyatoo/postal:latest
+            - docker tag quay.io/iloveyatoo/postal:alpine iloveyatoo/postal:alpine
             - docker push iloveyatoo/postal:alpine
             - docker push iloveyatoo/postal:latest
             - echo "$QUAY_PASS_ILOVEYATOO" | docker login quay.io --username "$QUAY_USER_ILOVEYATOO" --password-stdin
-            - docker tag catdeployed/postal:alpine quay.io/iloveyatoo/postal:alpine
-            - docker tag catdeployed/postal:alpine quay.io/iloveyatoo/postal:latest
+            - docker tag quay.io/iloveyatoo/postal:alpine quay.io/iloveyatoo/postal:latest
             - docker push quay.io/iloveyatoo/postal:alpine
             - docker push quay.io/iloveyatoo/postal:latest
             - artifact yank workflow postal-alpine-container.tar
@@ -41,11 +41,11 @@ blocks:
             - artifact pull workflow postal-debian-container.tar
             - docker load -i postal-debian-container.tar
             - echo "$DOCKER_HUB_PASS_CATDEPLOYED" | docker login --username "$DOCKER_HUB_USER_CATDEPLOYED" --password-stdin
+            - docker tag quay.io/iloveyatoo/postal:debian catdeployed/postal:debian
             - docker push catdeployed/postal:debian
             - echo "$DOCKER_HUB_PASS_ILOVEYATOO" | docker login --username "$DOCKER_HUB_USER_ILOVEYATOO" --password-stdin
-            - docker tag catdeployed/postal:debian iloveyatoo/postal:debian
+            - docker tag quay.io/iloveyatoo/postal:debian iloveyatoo/postal:debian
             - docker push iloveyatoo/postal:debian
             - echo "$QUAY_PASS_ILOVEYATOO" | docker login quay.io --username "$QUAY_USER_ILOVEYATOO" --password-stdin
-            - docker tag catdeployed/postal:debian quay.io/iloveyatoo/postal:debian
             - docker push quay.io/iloveyatoo/postal:debian
             - artifact yank workflow postal-debian-container.tar
