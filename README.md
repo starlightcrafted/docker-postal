@@ -1,21 +1,24 @@
 # docker-postal
-[![Build Status](https://iloveyatoo.semaphoreci.com/badges/docker-postal/branches/master.svg)](https://iloveyatoo.semaphoreci.com/projects/docker-postal) ![](https://img.shields.io/badge/image-catdeployed%2Fpostal-blue?style=flat-square&logo=Docker) ![](https://img.shields.io/docker/pulls/catdeployed/postal?style=flat-square)
+[![Build Status](https://iloveyatoo.semaphoreci.com/badges/docker-postal/branches/master.svg)](https://iloveyatoo.semaphoreci.com/projects/docker-postal) [![](https://img.shields.io/badge/image-quay.io%2Filoveyatoo%2Fpostal-blue?style=flat-square&logo=Docker)](https://quay.io/repository/iloveyatoo/postal?tab=tags) [![](https://img.shields.io/badge/image-docker.io%2Filoveyatoo%2Fpostal-blue?style=flat-square&logo=Docker)](https://hub.docker.com/repository/docker/iloveyatoo/postal/tags?page=1&ordering=last_updated)
 
 This project runs daily docker builds for postalhq/postal
 
+**Note that builds have recently been moved to a new account and docker-compose.yml files have been updated accordingly. Please check the updates, especially if you are on the old `ubuntu` tag.**
 
 #### Alpine Linux Container (Default)
-![](https://img.shields.io/badge/image-catdeployed%2Fpostal:alpine-blue?style=flat-square&logo=Docker) ![](https://img.shields.io/docker/image-size/catdeployed/postal/alpine?style=flat-square)
+![](https://img.shields.io/badge/image-quay.io%2Filoveyatoo%2Fpostal:alpine-blue?style=flat-square&logo=Docker) ![](https://img.shields.io/badge/image-docker.io%2Filoveyatoo%2Fpostal:alpine-blue?style=flat-square&logo=Docker) ![](https://img.shields.io/docker/image-size/iloveyatoo/postal/alpine?style=flat-square)
 
-For this container, use the 'alpine' folder.
+For this container, use the `alpine` folder.
 
-#### Ubuntu Linux Container
-![](https://img.shields.io/badge/image-catdeployed%2Fpostal:ubuntu-blue?style=flat-square&logo=Docker) ![](https://img.shields.io/docker/image-size/catdeployed/postal/ubuntu?style=flat-square)
+#### Debian Linux Container
+![](https://img.shields.io/badge/image-quay.io%2Filoveyatoo%2Fpostal:debian-blue?style=flat-square&logo=Docker) ![](https://img.shields.io/badge/image-docker.io%2Filoveyatoo%2Fpostal:debian-blue?style=flat-square&logo=Docker) ![](https://img.shields.io/docker/image-size/iloveyatoo/postal/debian?style=flat-square)
 
-For this container, use the 'ubuntu' folder.
+For this container, use the `debian` folder.
+
+**Previously, this was incorrectly named as the "ubuntu" container, if you were using the ubuntu container, you can use this one instead - they are compatiable and the same**
 
 ### Instructions
-1.  Change the folder to either `ubuntu` or `alpine`, depending on which version you want to use
+1.  Change the folder to either `debian` or `alpine`, depending on which version you want to use
 2.  Open `docker-compose.yml`
 3.  Update `MYSQL_ROOT_PASSWORD` and `RABBITMQ_DEFAULT_PASS` everywhere in the file to new secret passwords
 4.  Update `POSTAL_FNAME` (First Name), `POSTAL_LNAME` (Last Name), `POSTAL_PASSWORD`, and `POSTAL_EMAIL` values in the file

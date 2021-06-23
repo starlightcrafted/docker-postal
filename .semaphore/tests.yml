@@ -19,9 +19,9 @@ blocks:
         - name: 'Ubuntu Test'
           commands:
             - checkout
-            - cd ubuntu
-            - artifact pull workflow postal-ubuntu-container.tar
-            - docker load -i postal-ubuntu-container.tar
+            - cd debian
+            - artifact pull workflow postal-debian-container.tar
+            - docker load -i postal-debian-container.tar
             - docker-compose up -d
             - for i in {1..20}; do if [[ $(docker inspect postal | jq -r '.[].State.Health.Status') == "healthy" ]]; then break; elif [[ $i -eq 20 ]]; then exit 1; else sleep 15; fi; done;
 promotions:

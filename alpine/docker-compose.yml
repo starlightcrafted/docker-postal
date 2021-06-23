@@ -1,7 +1,7 @@
 version: "3"
 services:
   postal:
-    image: catdeployed/postal:alpine
+    image: quay.io/iloveyatoo/postal:alpine
     container_name: postal
     command: run
     ports:

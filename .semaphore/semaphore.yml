@@ -15,13 +15,13 @@ blocks:
             - docker build --network=host -t catdeployed/postal:alpine .
             - docker save -o postal-alpine-container.tar catdeployed/postal:alpine
             - artifact push workflow postal-alpine-container.tar --expire-in 1d
-        - name: 'Ubuntu'
+        - name: 'Debian'
           commands:
             - checkout
-            - cd ubuntu
-            - docker build --network=host -t catdeployed/postal:ubuntu .
-            - docker save -o postal-ubuntu-container.tar catdeployed/postal:ubuntu
-            - artifact push workflow postal-ubuntu-container.tar --expire-in 1d
+            - cd debian
+            - docker build --network=host -t catdeployed/postal:debian .
+            - docker save -o postal-ubuntu-container.tar catdeployed/postal:debian
+            - artifact push workflow postal-debian-container.tar --expire-in 1d
 promotions:
   - name: Docker Image Testing
     pipeline_file: tests.yml
