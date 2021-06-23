@@ -11,6 +11,6 @@ blocks:
         - name: 'Alpine Upload'
           commands:
             - artifact yank workflow postal-alpine-container.tar
-        - name: 'Ubuntu Upload'
+        - name: 'Debian Upload'
           commands:
-            - artifact yank workflow postal-ubuntu-container.tar
+            - artifact yank workflow postal-debian-container.tar
