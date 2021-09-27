@@ -1,3 +1,6 @@
+# Archived, use Postal's Docker containers instead https://docs.postalserver.io/install/upgrade-to-v2
+
+
 # docker-postal
 [![Build Status](https://iloveyatoo.semaphoreci.com/badges/docker-postal/branches/master.svg)](https://iloveyatoo.semaphoreci.com/projects/docker-postal) [![](https://img.shields.io/badge/image-quay.io%2Filoveyatoo%2Fpostal-blue?style=flat-square&logo=Docker)](https://quay.io/repository/iloveyatoo/postal?tab=tags) [![](https://img.shields.io/badge/image-docker.io%2Filoveyatoo%2Fpostal-blue?style=flat-square&logo=Docker)](https://hub.docker.com/repository/docker/iloveyatoo/postal/tags?page=1&ordering=last_updated)
 
